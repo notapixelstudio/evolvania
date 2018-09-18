@@ -30,9 +30,6 @@ func remove_state(state_name):
 	state_machine.remove_child(state_to_remove)
 	return true
 	
-func handle_input():
-	pass
-
 #  Questa non dovrebbe essere chiamata
 func _input(event):
 	state_machine.state.input_process(self, event)
