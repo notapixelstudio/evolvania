@@ -13,22 +13,6 @@ func _ready():
 	set_process_input(false)
 	for s in state_machine.get_children():
 		current_states.append(s.name)
-
-
-# add a node, specified by its script gd in the actor state_machine
-func add_state(state_name):
-	if state_machine.get_node(state_name):
-		return false
-	var new_state = load("res://actors/state_machine/states/"+state_name+".gd").new()
-	state_machine.add_child(new_state)
-	new_state.name=state_name
-	return true
-
-# in case we need to remove it.
-func remove_state(state_name):
-	var state_to_remove = state_machine.get_node("state_name")
-	state_machine.remove_child(state_to_remove)
-	return true
 	
 #  Questa non dovrebbe essere chiamata
 func _input(event):

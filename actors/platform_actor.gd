@@ -13,6 +13,17 @@ export (float) var FALL_THRESHOLD = 100
 
 export (bool) var can_dash = true
 
+var dna = {
+	'genotype': {
+		'jumps': 1,
+		'wall_jump': false
+	},
+	'phenotype': {
+		'jumps': 1,
+		'wall_jump': false
+	}
+}
+
 signal enter_state(state)
 signal perform_action(action)
 signal action_performed(action)
@@ -25,6 +36,21 @@ func set_direction(value):
 	direction = value
 	emit_signal("direction_changed", value)
 
+# add a node, specified by its script gd in the actor state_machine
+func add_state(state_name):
+	if state_machine.get_node(state_name):
+		return false
+	var new_state = load("res://actors/state_machine/states/"+state_name+".gd").new()
+	state_machine.add_child(new_state)
+	new_state.name=state_name
+	return true
+	
+# in case we need to remove it.
+func remove_state(state_name):
+	var state_to_remove = state_machine.get_node("state_name")
+	state_machine.remove_child(state_to_remove)
+	return true
+	
 func set_state(new_state):
 	# set state only if it is present
 	if state_machine.get_node(new_state):
@@ -34,6 +60,9 @@ func set_state(new_state):
 	
 func get_state():
 	return state_machine.state
+	
+func read_state(name):
+	return state_machine.get_node(name)
 	
 func climb():
 	set_state("climb")
@@ -68,6 +97,15 @@ func _ready():
 	state_machine = $state_machine
 	set_state("idle")
 	
+func develop():
+	# populate the state machine according to DNA
+	if dna['phenotype']['jumps'] > 0:
+		add_state('jump')
+		read_state('jump').max_jumps = dna['phenotype']['jumps']
+		
+	if dna['phenotype']['wall_jump']:
+		add_state('wall')
+		
 func _physics_process(delta):
 	velocity = move_and_slide(velocity, FLOOR_NORMAL)
 	state_machine.state.process(self, delta)
