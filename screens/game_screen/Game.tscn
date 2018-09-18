@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://screens/game_screen/Game.gd" type="Script" id=1]
 [ext_resource path="res://debug/FramesPerSecond/FPS.tscn" type="PackedScene" id=2]
@@ -6,10 +6,9 @@
 [ext_resource path="res://screens/game_screen/slope.tscn" type="PackedScene" id=4]
 [ext_resource path="res://screens/game_screen/wall_left.tscn" type="PackedScene" id=5]
 [ext_resource path="res://screens/game_screen/wall_right.tscn" type="PackedScene" id=6]
-[ext_resource path="res://actors/Hero2.tscn" type="PackedScene" id=7]
-[ext_resource path="res://actors/HeroWithState.tscn" type="PackedScene" id=8]
-[ext_resource path="res://screens/game_screen/juiceness/objects/pickup.tscn" type="PackedScene" id=9]
-[ext_resource path="res://actors/AIWithState.tscn" type="PackedScene" id=10]
+[ext_resource path="res://actors/HeroWithState.tscn" type="PackedScene" id=7]
+[ext_resource path="res://screens/game_screen/juiceness/objects/pickup.tscn" type="PackedScene" id=8]
+[ext_resource path="res://actors/AIWithState.tscn" type="PackedScene" id=9]
 
 [sub_resource type="PhysicsMaterial" id=1]
 
@@ -78,17 +77,14 @@ physics_material_override = SubResource( 3 )
 position = Vector2( 1019.89, 25.9207 )
 physics_material_override = SubResource( 4 )
 
-[node name="Hero2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 160.566, 30.8387 )
-
 [node name="Hero" parent="." groups=[
 "player",
-] instance=ExtResource( 8 )]
+] instance=ExtResource( 7 )]
 position = Vector2( 97.3661, 140.809 )
 
-[node name="jump" parent="." instance=ExtResource( 9 )]
+[node name="jump" parent="." instance=ExtResource( 8 )]
 position = Vector2( 17.8113, 495.977 )
 
-[node name="AI" parent="." instance=ExtResource( 10 )]
+[node name="AI" parent="." instance=ExtResource( 9 )]
 position = Vector2( 583.664, 261.69 )
 
