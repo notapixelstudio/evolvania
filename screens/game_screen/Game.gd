@@ -5,10 +5,10 @@ onready var DebugNode = get_node("DebugNode")
 
 func _ready():
 	# random generating AI guys
-	for i in rand_range(3, 10):
-		var d = load("res://actors/AIWithState.tscn").instance()
-		d.position = $AI.position + Vector2(rand_range(-200, 200), rand_range(-200, 200))
-		add_child(d)
+	#for i in rand_range(3, 10):
+	#	var d = load("res://actors/AIWithState.tscn").instance()
+	#	d.position = $AI.position + Vector2(rand_range(-200, 200), rand_range(-200, 200))
+	#	add_child(d)
 		
 	# develop the Hero
 	$Hero.develop()
