@@ -10,6 +10,9 @@ func _ready():
 		d.position = $AI.position + Vector2(rand_range(-200, 200), rand_range(-200, 200))
 		add_child(d)
 		
+	# develop the Hero
+	$Hero.develop()
+	
 func _input(event):
 	var debug_pressed = event.is_action_pressed("debug")
 	if debug_pressed:
