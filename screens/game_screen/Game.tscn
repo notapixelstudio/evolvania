@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://screens/game_screen/Game.gd" type="Script" id=1]
 [ext_resource path="res://debug/FramesPerSecond/FPS.tscn" type="PackedScene" id=2]
 [ext_resource path="res://actors/HeroWithState.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/tiles/tileset.tres" type="TileSet" id=4]
+[ext_resource path="res://actors/state_machine/state_machine.tscn" type="PackedScene" id=5]
+[ext_resource path="res://screens/game_screen/selection.gd" type="Script" id=6]
+[ext_resource path="res://screens/game_screen/play.gd" type="Script" id=7]
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
@@ -14,7 +17,17 @@ visible = false
 [node name="Hero" parent="." groups=[
 "player",
 ] instance=ExtResource( 3 )]
-position = Vector2( 97.3661, 140.809 )
+position = Vector2( 146.366, 479.809 )
+
+[node name="Hero2" parent="." groups=[
+"player",
+] instance=ExtResource( 3 )]
+position = Vector2( 237.366, 437.809 )
+
+[node name="Hero3" parent="." groups=[
+"player",
+] instance=ExtResource( 3 )]
+position = Vector2( 316.366, 479.809 )
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
@@ -36,4 +49,12 @@ occluder_light_mask = 1
 format = 1
 tile_data = PoolIntArray( 262144, 0, 0, 327680, 1, 0, 393216, 1, 0, 458752, 1, 0, 524288, 1, 0, 589824, 1, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 655360, 1, 0, 720896, 1, 0, 720901, 0, 0, 720902, 0, 0, 786432, 1, 0, 786433, 0, 0, 786434, 0, 0, 786435, 0, 0, 786436, 0, 0, 786437, 1, 0, 786438, 1, 0, 786439, 0, 0, 786440, 0, 0, 786441, 0, 0, 786442, 0, 0, 786443, 0, 0, 786444, 0, 0, 786445, 0, 0 )
 _sections_unfolded = [ "Cell", "Transform", "tile_set" ]
+
+[node name="state_machine" parent="." instance=ExtResource( 5 )]
+
+[node name="selection" type="Node" parent="state_machine"]
+script = ExtResource( 6 )
+
+[node name="play" type="Node" parent="state_machine"]
+script = ExtResource( 7 )
 

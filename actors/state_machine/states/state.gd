@@ -15,8 +15,6 @@ func setup(actor, previous_state):
 	clear()
 	
 func clear():
-	if name == "walk":
-		print("siamo a walk")
 	set_process_input(false)
 	set_process(false)
 	set_physics_process(false)

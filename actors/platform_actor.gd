@@ -4,6 +4,7 @@ var direction = 1 setget set_direction
 var velocity = Vector2(0, 0) setget set_velocity
 
 var state_machine = null
+var starting_state = "idle"
 
 export (float) var GRAVITY = 50
 export (Vector2) var FLOOR_NORMAL = Vector2(0, -1)
@@ -95,7 +96,7 @@ func stop():
 
 func _ready():
 	state_machine = $state_machine
-	set_state("idle")
+	set_state(starting_state)
 	
 func develop():
 	# populate the state machine according to DNA
