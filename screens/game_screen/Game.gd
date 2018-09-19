@@ -11,7 +11,7 @@ func _ready():
 	#	add_child(d)
 		
 	# develop the Hero
-	$Hero.develop()
+	$Content/Hero.develop()
 	
 func _input(event):
 	var debug_pressed = event.is_action_pressed("debug")
