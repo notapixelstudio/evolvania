@@ -12,7 +12,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 16, 20 )
+extents = Vector2( 16, 18 )
 
 [node name="Hero" type="KinematicBody2D"]
 input_pickable = false
@@ -36,7 +36,7 @@ jump = "ui_select"
 dash = "ui_cancel"
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -2, 0 )
+position = Vector2( -2, -3 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 region_enabled = true
@@ -92,5 +92,29 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 script = ExtResource( 8 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
 
 [connection signal="state_changed" from="state_machine" to="Label" method="_on_state_machine_state_changed"]
