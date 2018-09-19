@@ -5,12 +5,12 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 13, 12 )
+extents = Vector2( 19, 18 )
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 2, 2 )
+scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 512, 99, 15, 13 )

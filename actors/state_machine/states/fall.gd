@@ -1,7 +1,7 @@
 extends "state.gd"
 
-var in_air_speed = 400
-export (float) var MAX_FALL_SPEED = 2000
+var in_air_speed = 600
+export (float) var MAX_FALL_SPEED = 3000
 
 func setup(actor, previous_state):
 	in_air_speed = get_node("../walk").walk_speed

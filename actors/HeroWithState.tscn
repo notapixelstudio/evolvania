@@ -12,7 +12,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 16, 18 )
+extents = Vector2( 20, 28 )
 
 [node name="Hero" type="KinematicBody2D"]
 input_pickable = false
@@ -22,7 +22,7 @@ collision/safe_margin = 0.08
 motion/sync_to_physics = false
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "collision", "dna", "motion" ]
-GRAVITY = 50
+GRAVITY = 75.0
 FLOOR_NORMAL = Vector2( 0, -1 )
 SLOPE_STOP_SPEED = 200
 SLOPE_MAX_DEGREE = 46.0
@@ -37,7 +37,7 @@ dash = "ui_cancel"
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -2, -3 )
-scale = Vector2( 2, 2 )
+scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 438, 3, 23, 21 )
@@ -57,7 +57,7 @@ dash_speed = 600
 [node name="walk" type="Node" parent="state_machine"]
 editor/display_folded = true
 script = ExtResource( 5 )
-walk_speed = 400
+walk_speed = 600
 
 [node name="fall_threshold" type="Timer" parent="state_machine/walk"]
 process_mode = 1
@@ -70,7 +70,7 @@ script = ExtResource( 6 )
 
 [node name="fall" type="Node" parent="state_machine"]
 script = ExtResource( 7 )
-MAX_FALL_SPEED = 2000
+MAX_FALL_SPEED = 3000
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.0
