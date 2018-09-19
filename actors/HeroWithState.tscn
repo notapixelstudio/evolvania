@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://actors/Hero.gd" type="Script" id=1]
-[ext_resource path="res://actors/blocks.png" type="Texture" id=2]
+[ext_resource path="res://assets/tiles/spritesheet.png" type="Texture" id=2]
 [ext_resource path="res://actors/state_machine/state_machine.tscn" type="PackedScene" id=3]
 [ext_resource path="res://actors/state_machine/states/dash.gd" type="Script" id=4]
 [ext_resource path="res://actors/state_machine/states/walk.gd" type="Script" id=5]
@@ -12,7 +12,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 20, 20 )
+extents = Vector2( 16, 20 )
 
 [node name="Hero" type="KinematicBody2D"]
 input_pickable = false
@@ -36,10 +36,12 @@ jump = "ui_select"
 dash = "ui_cancel"
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -2, 0 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 64, 0, 16, 16 )
-_sections_unfolded = [ "Region" ]
+region_rect = Rect2( 438, 3, 23, 21 )
+_sections_unfolded = [ "Region", "Transform", "texture" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
