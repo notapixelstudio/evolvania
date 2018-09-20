@@ -1,12 +1,15 @@
-extends "res://actors/state_machine/states/state.gd"
+extends "state.gd"
 
+var this_actor 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
-# Called when the node enters the scene tree for the first time.
 func setup(actor, previous_state):
-	print(previous_state)
+	pass
+	
+# Called when the node enters the scene tree for the first time.
+func clear():
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

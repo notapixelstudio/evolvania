@@ -4,8 +4,17 @@ var state_machine
 var debug = false
 onready var DebugNode = get_node("DebugNode")
 
+var last_checkpoint = Vector2(185, 720)
 signal perform_action
+var player = preload("res://actors/HeroWithState.tscn")
+
 func _ready():
+	# create first three heroes
+	for i in range(0, 3):
+		var p = player.instance()
+		p.position = last_checkpoint + Vector2(60, 0)*i
+		p.add_to_group("player")
+		$Content.add_child(p)
 	state_machine = $state_machine
 	state_machine.set_state("selection")
 	# random generating AI guys
@@ -16,7 +25,7 @@ func _ready():
 	
 	# Create three heroes and make them selectable
 	# develop the Hero
-	$Content/Hero.develop()
+	#$Hero.develop()
 	
 func _input(event):
 	state_machine.state.input_process(self, event)
@@ -26,7 +35,22 @@ func _input(event):
 		debug = not debug
 		DebugNode.visible = debug
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+func on_player_death():
+	state_machine.set_state("selection")
+
+func new_checkpoint(checkpoint_node):
+	return checkpoint_node.position
+
+func _on_AI_copulate(player):
+	for n in $Content.get_children():
+		if n.is_in_group("player"):
+			n.remove_from_group("player")
+	last_checkpoint = player[0].position
+	create_children()
+	
+func create_children():
+	for i in range(0, 3):
+		var p = player.instance()
+		p.position = last_checkpoint + Vector2(60, 0)*i
+		p.add_to_group("player")
+		$Content.add_child(p)
