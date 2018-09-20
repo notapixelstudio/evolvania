@@ -24,7 +24,7 @@ func setup(actor, previous_state):
 			jumps = max(max_jumps - 1, 1)
 			was_dashing = true
 	
-	if jumps < 1:
+	if not actor.dna['phenotype']['wings'] and jumps < 1:
 		return
 	
 	jumps -= 1
