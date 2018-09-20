@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://screens/game_screen/Game.gd" type="Script" id=1]
 [ext_resource path="res://debug/FramesPerSecond/FPS.tscn" type="PackedScene" id=2]
@@ -6,9 +6,10 @@
 [ext_resource path="res://screens/game_screen/TileMap.gd" type="Script" id=4]
 [ext_resource path="res://actors/HeroWithState.tscn" type="PackedScene" id=5]
 [ext_resource path="res://actors/Gem.tscn" type="PackedScene" id=6]
-[ext_resource path="res://actors/state_machine/state_machine.tscn" type="PackedScene" id=7]
-[ext_resource path="res://screens/game_screen/selection.gd" type="Script" id=8]
-[ext_resource path="res://screens/game_screen/play.gd" type="Script" id=9]
+[ext_resource path="res://actors/Block.tscn" type="PackedScene" id=7]
+[ext_resource path="res://actors/state_machine/state_machine.tscn" type="PackedScene" id=8]
+[ext_resource path="res://screens/game_screen/selection.gd" type="Script" id=9]
+[ext_resource path="res://screens/game_screen/play.gd" type="Script" id=10]
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
@@ -67,14 +68,17 @@ position = Vector2( 1659, 1449 )
 [node name="Gem3" parent="Content" instance=ExtResource( 6 )]
 position = Vector2( 4263, 1463 )
 
-[node name="state_machine" parent="." instance=ExtResource( 7 )]
+[node name="Block" parent="Content" instance=ExtResource( 7 )]
+position = Vector2( 63, 504 )
+
+[node name="state_machine" parent="." instance=ExtResource( 8 )]
 actor = NodePath("../Content")
 
 [node name="selection" type="Node" parent="state_machine"]
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [node name="play" type="Node" parent="state_machine"]
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 
 
 [editable path="Content/Hero3"]

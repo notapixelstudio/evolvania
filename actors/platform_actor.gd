@@ -16,12 +16,21 @@ export (bool) var can_dash = true
 
 var dna = {
 	'genotype': {
-		'jumps': 1,
-		'wall_jump': false
+		'long-living': false,
+		'fecund': false,
+		'charming': false,
+		'horn': false,
+		'wings': false,
+		'gills': false,
+		'scales': false
 	},
 	'phenotype': {
-		'jumps': 1,
-		'wall_jump': false
+		'long-living': false,
+		'fecund': false,
+		'charming': false,
+		'horn': false,
+		'gills': false,
+		'scales': false
 	}
 }
 
@@ -98,24 +107,20 @@ func _ready():
 	state_machine = $state_machine
 	set_state(starting_state)
 	
-func develop():
-	# populate the state machine according to DNA
-	if dna['phenotype']['jumps'] > 0:
-		add_state('jump')
-		read_state('jump').max_jumps = dna['phenotype']['jumps']
-		
-	if dna['phenotype']['wall_jump']:
-		add_state('wall')
-		
 func _physics_process(delta):
 	velocity = move_and_slide(velocity, FLOOR_NORMAL)
 	state_machine.state.process(self, delta)
 	
 func zone_entered(type):
 	if type == 'lava':
-		print('TODO call a method that kills the hero')
+		if not dna['phenotype']['scales']:
+			print('TODO call a method that kills the hero')
+		# FIXME touching lava when having scales should have an effect
 	elif type == 'water':
-		print('TODO call a method that either kills the hero or makes the hero enter the water state, according to its phenotype')
+		if dna['phenotype']['gills']:
+			print('TODO call a method that makes the hero enter the water state')
+		else:
+			print('TODO call a method that kills the hero')
 	
 func zone_exited(type):
 	if type == 'water':
