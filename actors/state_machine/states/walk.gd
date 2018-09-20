@@ -9,7 +9,6 @@ func setup(actor, previous_state):
 	actor.emit_signal("perform_action", "walk")
 	
 func clear():
-	print("clearing out")
 	.clear()
 	$fall_threshold.disconnect("timeout", self, "_on_fall_threshold_timeout")
 	
