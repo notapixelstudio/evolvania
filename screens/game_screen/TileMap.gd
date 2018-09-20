@@ -4,11 +4,7 @@ extends TileMap
 func _ready():
 	for tile in get_used_cells_by_id(5):
 		create_active_area(tile, 'water', 1)
-	for tile in get_used_cells_by_id(6):
-		create_active_area(tile, 'water', 0.4)
 	
-	for tile in get_used_cells_by_id(7):
-		create_active_area(tile, 'lava', 1)
 	for tile in get_used_cells_by_id(8):
 		create_active_area(tile, 'lava', 0.4)
 		

@@ -73,12 +73,12 @@ _sections_unfolded = [ "Collision", "collision", "motion", "preset_genotype", "p
 preset_phenotype = [ "horn" ]
 
 [node name="AI2" parent="Content" instance=ExtResource( 7 )]
-position = Vector2( 1113, 1484 )
+position = Vector2( 588, 651 )
 _sections_unfolded = [ "Collision", "collision", "motion", "preset_genotype", "preset_phenotype" ]
 preset_phenotype = [ "scales" ]
 
 [node name="AI3" parent="Content" instance=ExtResource( 7 )]
-position = Vector2( 1365, 1475 )
+position = Vector2( 1323, 1460 )
 _sections_unfolded = [ "Collision", "collision", "motion", "preset_genotype", "preset_phenotype" ]
 
 [node name="state_machine" parent="." instance=ExtResource( 8 )]
