@@ -58,10 +58,23 @@ position = Vector2( -1764, 1764 )
 [node name="Block2" parent="Content" instance=ExtResource( 6 )]
 position = Vector2( -1701, 1764 )
 
+[node name="Block3" parent="Content" instance=ExtResource( 6 )]
+position = Vector2( 231, 504 )
+
 [node name="AI" parent="Content" instance=ExtResource( 7 )]
-position = Vector2( -2777, 1291.5 )
-_sections_unfolded = [ "Collision", "collision", "motion", "preset_phenotype" ]
+position = Vector2( 1176, 714 )
+_sections_unfolded = [ "Collision", "collision", "motion", "preset_genotype", "preset_phenotype" ]
 preset_phenotype = [ "horn" ]
+
+[node name="AI2" parent="Content" instance=ExtResource( 7 )]
+position = Vector2( 609, 336 )
+_sections_unfolded = [ "Collision", "collision", "motion", "preset_genotype", "preset_phenotype" ]
+preset_phenotype = [ "scales" ]
+
+[node name="AI3" parent="Content" instance=ExtResource( 7 )]
+position = Vector2( 1470, 288 )
+_sections_unfolded = [ "Collision", "collision", "motion", "preset_genotype", "preset_phenotype" ]
+preset_phenotype = [ "scales" ]
 
 [node name="state_machine" parent="." instance=ExtResource( 8 )]
 actor = NodePath("../Content")
@@ -75,3 +88,5 @@ script = ExtResource( 10 )
 state_machine = "../"
 
 [connection signal="copulate" from="Content/AI" to="." method="_on_AI_copulate"]
+[connection signal="copulate" from="Content/AI2" to="." method="_on_AI_copulate"]
+[connection signal="copulate" from="Content/AI3" to="." method="_on_AI_copulate"]

@@ -32,6 +32,7 @@ var dna = {
 		'fecund': false,
 		'alluring': false,
 		'horn': false,
+		'wings': false,
 		'gills': false,
 		'scales': false
 	}
@@ -141,4 +142,17 @@ func zone_entered(type):
 func zone_exited(type):
 	if type == 'water':
 		print('TODO call a method that makes the hero exit the water state')
+	
+func get_gamete():
+	var gamete = {}
+	
+	randomize()
+	
+	for trait in dna['genotype'].keys():
+		if randi() % 2 == 0:
+			gamete[trait] = dna['genotype'][trait]
+		else:
+			gamete[trait] = dna['phenotype'][trait]
+			
+	return gamete
 	
