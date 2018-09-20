@@ -14,7 +14,19 @@ func _ready():
 		var p = player.instance()
 		p.position = last_checkpoint + Vector2(60, 0)*i
 		p.add_to_group("player")
+		
+		if i == 0:
+			p.dna['phenotype']['fecund'] = true
+			p.dna['genotype']['fecund'] = true
+		elif i == 1:
+			p.dna['phenotype']['alluring'] = true
+			p.dna['genotype']['alluring'] = true
+		elif i == 2:
+			p.dna['phenotype']['long-living'] = true
+			p.dna['genotype']['long-living'] = true
+		
 		$Content.add_child(p)
+		
 	state_machine = $state_machine
 	state_machine.set_state("selection")
 	# random generating AI guys

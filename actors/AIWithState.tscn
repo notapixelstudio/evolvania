@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://actors/AI.gd" type="Script" id=1]
 [ext_resource path="res://assets/tiles/spritesheet.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://actors/state_machine/states/jump.gd" type="Script" id=9]
 [ext_resource path="res://actors/state_machine/states/chilling.gd" type="Script" id=10]
 [ext_resource path="res://actors/Label.gd" type="Script" id=11]
+[ext_resource path="res://actors/Traits.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -31,6 +32,8 @@ SLOPE_STOP_SPEED = 200
 SLOPE_MAX_DEGREE = 46
 FALL_THRESHOLD = 100
 can_dash = true
+preset_genotype = [  ]
+preset_phenotype = [  ]
 left = "ui_left"
 right = "ui_right"
 up = "ui_up"
@@ -39,10 +42,11 @@ jump = "ui_select"
 dash = "ui_cancel"
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1, 3 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 441.352, 25.7642, 17.75, 21.75 )
+region_rect = Rect2( 602, 84, 17, 19 )
 _sections_unfolded = [ "Region", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -127,6 +131,7 @@ one_shot = false
 autostart = false
 
 [node name="Area2D" type="Area2D" parent="."]
+editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -145,6 +150,9 @@ texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 376.857, 77.831, 9.25, 10.5 )
 _sections_unfolded = [ "Region", "Transform", "texture" ]
+
+[node name="Traits" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1, 3 )
 
 [connection signal="state_changed" from="state_machine" to="Label" method="_on_state_machine_state_changed"]
 [connection signal="timeout" from="change_state" to="." method="_on_change_state_timeout"]
