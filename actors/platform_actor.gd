@@ -111,3 +111,13 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, FLOOR_NORMAL)
 	state_machine.state.process(self, delta)
 	
+func zone_entered(type):
+	if type == 'lava':
+		print('TODO call a method that kills the hero')
+	elif type == 'water':
+		print('TODO call a method that either kills the hero or makes the hero enter the water state, according to its phenotype')
+	
+func zone_exited(type):
+	if type == 'water':
+		print('TODO call a method that makes the hero exit the water state')
+	
