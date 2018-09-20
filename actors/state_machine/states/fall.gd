@@ -42,7 +42,7 @@ func process(actor, delta):
 	if actor.is_on_wall():
 		actor.wall_slide()
 	
-	if actor.has_method("handle_input"):
+	if actor.is_processing_input():
 		if Input.is_action_pressed(actor.right):
 			actor.direction = 1
 			actor.velocity.x = in_air_speed * actor.direction
@@ -51,7 +51,7 @@ func process(actor, delta):
 			actor.velocity.x = in_air_speed * actor.direction
 	
 	if actor.is_on_floor():
-		if actor.has_method("handle_input"):
+		if actor.is_processing_input():
 			if Input.is_action_pressed(actor.right):
 				actor.direction = 1
 				actor.walk()

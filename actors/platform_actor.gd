@@ -82,6 +82,9 @@ func dash():
 		return
 	set_state("dash")
 
+func die():
+	set_state("dead")
+	
 func jump():
 	set_state("jump")
 		
@@ -119,13 +122,13 @@ func _physics_process(delta):
 func zone_entered(type):
 	if type == 'lava':
 		if not dna['phenotype']['scales']:
-			print('TODO call a method that kills the hero')
+			die()
 		# FIXME touching lava when having scales should have an effect
 	elif type == 'water':
 		if dna['phenotype']['gills']:
 			print('TODO call a method that makes the hero enter the water state')
 		else:
-			print('TODO call a method that kills the hero')
+			die()
 	
 func zone_exited(type):
 	if type == 'water':

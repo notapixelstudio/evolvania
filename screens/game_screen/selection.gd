@@ -1,14 +1,21 @@
 extends "res://actors/state_machine/states/state.gd"
 var children = []
 var index = 0
+
+
 func setup(actor, previous_state):
+	children = []
+	index=0
 	for n in actor.get_children():
+		print(n.get_groups())
 		if n.is_in_group("player"):
 			children.append(n)
 			n.set_process_input(false)
 			n.add_state("selected")
 	actor.emit_signal("perform_action", name)
-	print(children)
+	if len(children) <= 0 :
+		actor.get_parent().game_over()
+		return
 	children[index].set_state("selected")
 	children[index].get_node("Camera2D").current = true
 
@@ -26,18 +33,15 @@ func mod(a,b):
 func input_process(actor, event):
 	if event.is_action_pressed("ui_left"):
 		children[index].idle()
-		children[index].get_node("Camera2D").current = false
 		index = mod(index - 1, len(children))
 		children[index].set_state("selected")
-		children[index].get_node("Camera2D").current = true
 	if event.is_action_pressed("ui_right"):
 		children[index].idle()
-		children[index].get_node("Camera2D").current = false
 		index = mod(index + 1, len(children))
 		children[index].set_state("selected")
-		children[index].get_node("Camera2D").current = true
 	if event.is_action_pressed("ui_select"):
 		actor.state_machine.set_state("play")
 		children[index].set_process_input(true)
 		children[index].idle()
 		children[index].get_node("Camera2D").current = true
+		children[index].connect("dead", actor, "on_player_death")

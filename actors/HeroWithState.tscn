@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://actors/Hero.gd" type="Script" id=1]
 [ext_resource path="res://assets/tiles/spritesheet.png" type="Texture" id=2]
@@ -9,7 +9,9 @@
 [ext_resource path="res://actors/state_machine/states/fall.gd" type="Script" id=7]
 [ext_resource path="res://actors/state_machine/states/jump.gd" type="Script" id=8]
 [ext_resource path="res://actors/state_machine/states/wall.gd" type="Script" id=9]
-[ext_resource path="res://actors/Label.gd" type="Script" id=10]
+[ext_resource path="res://actors/state_machine/states/dead.gd" type="Script" id=10]
+[ext_resource path="res://actors/state_machine/states/chilling.gd" type="Script" id=11]
+[ext_resource path="res://actors/Label.gd" type="Script" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -73,16 +75,17 @@ shape = SubResource( 1 )
 _sections_unfolded = [ "shape" ]
 
 [node name="state_machine" parent="." instance=ExtResource( 3 )]
-editor/display_folded = true
 
 [node name="dash" type="Node" parent="state_machine"]
 script = ExtResource( 4 )
+state_machine = "../"
 dash_length = 300
 dash_speed = 600
 
 [node name="walk" type="Node" parent="state_machine"]
 editor/display_folded = true
 script = ExtResource( 5 )
+state_machine = "../"
 walk_speed = 600
 
 [node name="fall_threshold" type="Timer" parent="state_machine/walk"]
@@ -93,24 +96,35 @@ autostart = false
 
 [node name="idle" type="Node" parent="state_machine"]
 script = ExtResource( 6 )
+state_machine = "../"
 
 [node name="fall" type="Node" parent="state_machine"]
 script = ExtResource( 7 )
+state_machine = "../"
 MAX_FALL_SPEED = 3000
 
 [node name="jump" type="Node" parent="state_machine"]
 script = ExtResource( 8 )
+state_machine = "../"
 jump_height = 1400
 max_jumps = 1
 
 [node name="wall" type="Node" parent="state_machine"]
 script = ExtResource( 9 )
+state_machine = "../"
 wall_jump = 800
 dash_jump_multiplier = 1.4
 MAX_WALL_SPEED = 600
 
+[node name="dead" type="Node" parent="state_machine"]
+script = ExtResource( 10 )
+state_machine = "../"
+
+[node name="chilling" type="Node" parent="state_machine"]
+script = ExtResource( 11 )
+state_machine = "../"
+
 [node name="Label" type="Label" parent="."]
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -131,7 +145,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 10 )
+script = ExtResource( 12 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 1
@@ -191,3 +205,4 @@ region_rect = Rect2( 627, 79, 5, 7 )
 _sections_unfolded = [ "Region", "Transform" ]
 
 [connection signal="state_changed" from="state_machine" to="Label" method="_on_state_machine_state_changed"]
+[connection signal="player_dead" from="state_machine/dead" to="." method="_on_dead_player_dead"]

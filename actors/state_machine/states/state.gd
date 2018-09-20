@@ -1,5 +1,7 @@
 extends Node
 
+export (NodePath) var state_machine = "../"
+
 func _ready():
 	set_process_input(false)
 	set_process(false)

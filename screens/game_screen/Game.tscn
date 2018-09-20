@@ -59,7 +59,9 @@ actor = NodePath("../Content")
 
 [node name="selection" type="Node" parent="state_machine"]
 script = ExtResource( 8 )
+state_machine = "../"
 
 [node name="play" type="Node" parent="state_machine"]
 script = ExtResource( 9 )
+state_machine = "../"
 
