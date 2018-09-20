@@ -2,8 +2,13 @@ extends "res://actors/state_machine/states/state.gd"
 var children = []
 var index = 0
 
+var this_actor
+
 
 func setup(actor, previous_state):
+	this_actor = actor
+	actor.get_parent().get_node('CanvasLayer/Interface/Bars').visible = false
+	
 	children = []
 	index=0
 	for n in actor.get_children():
@@ -19,6 +24,9 @@ func setup(actor, previous_state):
 	children[index].set_state("selected")
 	children[index].get_node("Camera2D").current = true
 
+func clear():
+	this_actor.get_parent().get_node('CanvasLayer/Interface/Bars').visible = true
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

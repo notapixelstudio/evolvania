@@ -92,7 +92,7 @@ state_machine = "../"
 process_mode = 1
 wait_time = 1.0
 one_shot = false
-autostart = true
+autostart = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 1
