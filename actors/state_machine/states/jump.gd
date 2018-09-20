@@ -1,10 +1,10 @@
 extends "state.gd"
 
-export (int) var jump_height = 800
+export (int) var jump_height = 1400
 export (int) var max_jumps = 1
 
 var was_dashing = false
-var in_air_speed = 400.0
+var in_air_speed = 600.0
 
 onready var jumps = max_jumps
 

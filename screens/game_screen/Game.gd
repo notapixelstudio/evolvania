@@ -16,7 +16,7 @@ func _ready():
 	
 	# Create three heroes and make them selectable
 	# develop the Hero
-	$Hero.develop()
+	$Content/Hero.develop()
 	
 func _input(event):
 	state_machine.state.input_process(self, event)
