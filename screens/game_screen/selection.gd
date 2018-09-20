@@ -40,8 +40,11 @@ func input_process(actor, event):
 		index = mod(index + 1, len(children))
 		children[index].set_state("selected")
 	if event.is_action_pressed("ui_select"):
-		actor.state_machine.set_state("play")
 		children[index].set_process_input(true)
 		children[index].idle()
 		children[index].get_node("Camera2D").current = true
 		children[index].connect("dead", actor, "on_player_death")
+		children[index].connect("collect", actor, "on_collect_gems")		
+		global.this_player = children[index]
+		print(global.this_player)
+		actor.state_machine.set_state("play")

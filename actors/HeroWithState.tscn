@@ -75,6 +75,7 @@ shape = SubResource( 1 )
 _sections_unfolded = [ "shape" ]
 
 [node name="state_machine" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
 
 [node name="dash" type="Node" parent="state_machine"]
 script = ExtResource( 4 )
@@ -204,5 +205,27 @@ region_enabled = true
 region_rect = Rect2( 627, 79, 5, 7 )
 _sections_unfolded = [ "Region", "Transform" ]
 
+[node name="life_span" type="Timer" parent="."]
+process_mode = 1
+wait_time = 120.0
+one_shot = false
+autostart = false
+
+[node name="collector" type="Area2D" parent="."]
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="shape" type="CollisionShape2D" parent="collector"]
+shape = SubResource( 1 )
+_sections_unfolded = [ "shape" ]
+
 [connection signal="state_changed" from="state_machine" to="Label" method="_on_state_machine_state_changed"]
 [connection signal="player_dead" from="state_machine/dead" to="." method="_on_dead_player_dead"]
+[connection signal="timeout" from="life_span" to="." method="_on_life_span_timeout"]
+[connection signal="area_entered" from="collector" to="." method="_on_collector_area_entered"]

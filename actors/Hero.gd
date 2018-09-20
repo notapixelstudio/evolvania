@@ -8,6 +8,9 @@ export (String) var jump = "ui_select"
 export (String) var dash = "ui_cancel"
 
 signal dead
+signal collect
+
+var life_span = 12
 
 func handle_input():
 	pass
@@ -19,3 +22,13 @@ func _input(event):
 
 func _on_dead_player_dead():
 	emit_signal("dead")
+
+func _on_life_span_timeout():
+	die()
+
+
+func _on_collector_area_entered(area):
+	print(area.get_groups())
+	if area.is_in_group("collectible"):
+		emit_signal("collect")
+		area.queue_free()

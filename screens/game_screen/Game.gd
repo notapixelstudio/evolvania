@@ -6,7 +6,13 @@ onready var DebugNode = get_node("DebugNode")
 
 var last_checkpoint = Vector2(185, 720)
 signal perform_action
+signal update_time(value)
+signal update_counter(value)
+signal reset_lifebar(value)
+
 var player = preload("res://actors/HeroWithState.tscn")
+var this_player
+var collected_gems = 0
 
 func _ready():
 	# create first three heroes
@@ -63,3 +69,16 @@ func create_children():
 		
 func game_over():
 	get_tree().change_scene_to(load("res://screens/gameover_screen/GameOver.tscn"))
+
+func _on_Timer_timeout():
+	emit_signal("update_time", global.this_player.get_node("life_span").get_time_left())
+
+func reactivate_timer():
+	var this_value = global.this_player.life_span
+	global.this_player.get_node("life_span").wait_time = global.this_player.life_span
+	emit_signal("reset_lifebar", this_value)
+	# emit_signal("update_time", global.this_player.get_node("life_span").get_time_left())
+	
+func on_collect_gems():
+	collected_gems += 1
+	emit_signal("update_counter", collected_gems)

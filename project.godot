@@ -19,6 +19,10 @@ config/name="evolvania"
 run/main_scene="res://screens/game_screen/Game.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+global="*res://globals/global.gd"
+
 [input]
 
 debug={

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://screens/game_screen/Game.gd" type="Script" id=1]
 [ext_resource path="res://debug/FramesPerSecond/FPS.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://actors/state_machine/state_machine.tscn" type="PackedScene" id=7]
 [ext_resource path="res://screens/game_screen/selection.gd" type="Script" id=8]
 [ext_resource path="res://screens/game_screen/play.gd" type="Script" id=9]
+[ext_resource path="res://interface/Interface.tscn" type="PackedScene" id=10]
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
@@ -65,3 +66,22 @@ state_machine = "../"
 script = ExtResource( 9 )
 state_machine = "../"
 
+[node name="Timer" type="Timer" parent="state_machine/play"]
+process_mode = 1
+wait_time = 2.0
+one_shot = false
+autostart = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="Interface" parent="CanvasLayer" instance=ExtResource( 10 )]
+
+[connection signal="reset_lifebar" from="." to="CanvasLayer/Interface" method="_on_Game_reset_lifebar"]
+[connection signal="update_counter" from="." to="CanvasLayer/Interface" method="_on_Game_update_counter"]
+[connection signal="update_time" from="." to="CanvasLayer/Interface" method="_on_Game_update_time"]
+[connection signal="timeout" from="state_machine/play/Timer" to="." method="_on_Timer_timeout"]

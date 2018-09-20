@@ -6,8 +6,9 @@ extends "res://actors/state_machine/states/state.gd"
 
 # Called when the node enters the scene tree for the first time.
 func setup(actor, previous_state):
-	print(previous_state)
+	actor.get_parent().reactivate_timer()
+	global.this_player.get_node("life_span").start()
+	$Timer.start($Timer.wait_time)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func clear():
+	$Timer.stop()
