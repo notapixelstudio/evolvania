@@ -7,7 +7,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 19, 18 )
 
-[node name="Node2D" type="Node2D"]
+[node name="Gem" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 3, 3 )

@@ -13,6 +13,9 @@ func setup(actor, previous_state):
 			n.set_process_input(false)
 			n.add_state("selected")
 	actor.emit_signal("perform_action", name)
+	if len(children) <= 0 :
+		actor.get_parent().game_over()
+		return
 	children[index].set_state("selected")
 	children[index].get_node("Camera2D").current = true
 

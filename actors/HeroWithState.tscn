@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://actors/Hero.gd" type="Script" id=1]
 [ext_resource path="res://assets/tiles/spritesheet.png" type="Texture" id=2]
@@ -7,9 +7,9 @@
 [ext_resource path="res://actors/state_machine/states/walk.gd" type="Script" id=5]
 [ext_resource path="res://actors/state_machine/states/idle.gd" type="Script" id=6]
 [ext_resource path="res://actors/state_machine/states/fall.gd" type="Script" id=7]
-[ext_resource path="res://actors/state_machine/states/dead.gd" type="Script" id=8]
-[ext_resource path="res://actors/state_machine/states/jump.gd" type="Script" id=9]
-[ext_resource path="res://actors/state_machine/states/wall.gd" type="Script" id=10]
+[ext_resource path="res://actors/state_machine/states/jump.gd" type="Script" id=8]
+[ext_resource path="res://actors/state_machine/states/wall.gd" type="Script" id=9]
+[ext_resource path="res://actors/state_machine/states/dead.gd" type="Script" id=10]
 [ext_resource path="res://actors/state_machine/states/chilling.gd" type="Script" id=11]
 [ext_resource path="res://actors/Label.gd" type="Script" id=12]
 
@@ -17,6 +17,11 @@
 
 custom_solver_bias = 0.0
 extents = Vector2( 20, 28 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 20 )
 
 [node name="Hero" type="KinematicBody2D"]
 input_pickable = false
@@ -32,6 +37,25 @@ SLOPE_STOP_SPEED = 200
 SLOPE_MAX_DEGREE = 46.0
 FALL_THRESHOLD = 150.0
 can_dash = true
+dna = {
+"genotype": {
+"charming": false,
+"fecund": false,
+"gills": false,
+"horn": false,
+"long-living": false,
+"scales": false,
+"wings": false
+},
+"phenotype": {
+"charming": false,
+"fecund": false,
+"gills": false,
+"horn": false,
+"long-living": false,
+"scales": false
+}
+}
 left = "ui_left"
 right = "ui_right"
 up = "ui_up"
@@ -40,11 +64,10 @@ jump = "ui_select"
 dash = "ui_cancel"
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -2, -3 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 438, 3, 23, 21 )
+region_rect = Rect2( 602, 84, 17, 19 )
 _sections_unfolded = [ "Region", "Transform", "texture" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -80,22 +103,22 @@ script = ExtResource( 7 )
 state_machine = "../"
 MAX_FALL_SPEED = 3000
 
-[node name="dead" type="Node" parent="state_machine"]
-script = ExtResource( 8 )
-state_machine = "../"
-
 [node name="jump" type="Node" parent="state_machine"]
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 state_machine = "../"
 jump_height = 1400
 max_jumps = 1
 
 [node name="wall" type="Node" parent="state_machine"]
-script = ExtResource( 10 )
+script = ExtResource( 9 )
 state_machine = "../"
 wall_jump = 800
 dash_jump_multiplier = 1.4
 MAX_WALL_SPEED = 600
+
+[node name="dead" type="Node" parent="state_machine"]
+script = ExtResource( 10 )
+state_machine = "../"
 
 [node name="chilling" type="Node" parent="state_machine"]
 script = ExtResource( 11 )
@@ -147,6 +170,39 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
+
+[node name="Traits" type="Node2D" parent="."]
+
+[node name="horn" type="Node2D" parent="Traits"]
+editor/display_folded = true
+
+[node name="HornArea" type="Area2D" parent="Traits/horn" groups=[
+"breaker",
+]]
+position = Vector2( 0, -27 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Traits/horn/HornArea"]
+position = Vector2( 0, -8 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "shape" ]
+
+[node name="Sprite" type="Sprite" parent="Traits/horn"]
+position = Vector2( 0, -33 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 627, 79, 5, 7 )
+_sections_unfolded = [ "Region", "Transform" ]
 
 [connection signal="state_changed" from="state_machine" to="Label" method="_on_state_machine_state_changed"]
 [connection signal="player_dead" from="state_machine/dead" to="." method="_on_dead_player_dead"]

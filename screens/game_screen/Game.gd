@@ -60,3 +60,6 @@ func create_children():
 		p.position = last_checkpoint + Vector2(60, 0)*i
 		p.add_to_group("player")
 		$Content.add_child(p)
+		
+func game_over():
+	get_tree().change_scene_to(load("res://screens/gameover_screen/GameOver.tscn"))
