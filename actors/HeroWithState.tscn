@@ -54,7 +54,6 @@ shape = SubResource( 1 )
 _sections_unfolded = [ "shape" ]
 
 [node name="state_machine" parent="." instance=ExtResource( 3 )]
-editor/display_folded = true
 
 [node name="dash" type="Node" parent="state_machine"]
 script = ExtResource( 4 )
