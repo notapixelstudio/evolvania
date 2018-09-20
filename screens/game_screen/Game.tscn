@@ -90,7 +90,7 @@ state_machine = "../"
 
 [node name="Timer" type="Timer" parent="state_machine/play"]
 process_mode = 1
-wait_time = 2.0
+wait_time = 1.0
 one_shot = false
 autostart = true
 

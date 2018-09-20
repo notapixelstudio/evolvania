@@ -10,7 +10,7 @@ export (String) var dash = "ui_cancel"
 signal dead
 signal collect
 
-var life_span = 120
+var life_span = 12
 
 func handle_input():
 	pass
