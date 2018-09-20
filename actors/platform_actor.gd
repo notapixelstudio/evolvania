@@ -107,6 +107,9 @@ func idle():
 func wall_slide():
 	set_state("wall")
 	
+func swim():
+	set_state("swim")
+	
 func stop():
 	emit_signal("action_performed", "stop")
 
@@ -135,13 +138,14 @@ func zone_entered(type):
 		# FIXME touching lava when having scales should have an effect
 	elif type == 'water':
 		if dna['phenotype']['gills']:
-			print('TODO call a method that makes the hero enter the water state')
+			swim()
 		else:
 			die()
 	
 func zone_exited(type):
 	if type == 'water':
-		print('TODO call a method that makes the hero exit the water state')
+		pass
+		#idle()
 	
 func get_gamete():
 	var gamete = {}
