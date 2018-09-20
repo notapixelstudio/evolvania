@@ -36,7 +36,7 @@ func _on_Area2D_body_entered(body):
 		body.set_state("chilling")
 		body.remove_from_group("player")
 		emit_signal("copulate", [body])
-		disconnect("body_entered", self, "_on_Area2D_body_entered")
+		queue_free()
 
 
 func _on_Area2D_body_exited(body):

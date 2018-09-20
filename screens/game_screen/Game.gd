@@ -42,11 +42,17 @@ func new_checkpoint(checkpoint_node):
 	return checkpoint_node.position
 
 func _on_AI_copulate(player):
+	var node_to_eliminate = []
 	for n in $Content.get_children():
 		if n.is_in_group("player"):
 			n.remove_from_group("player")
+			node_to_eliminate.append(n)
 	last_checkpoint = player[0].position
 	create_children()
+	player[0].queue_free()
+	state_machine.set_state("selection")
+	for node in node_to_eliminate:
+		node.queue_free()
 	
 func create_children():
 	for i in range(0, 3):
