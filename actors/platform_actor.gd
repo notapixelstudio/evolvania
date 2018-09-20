@@ -14,11 +14,14 @@ export (float) var FALL_THRESHOLD = 100
 
 export (bool) var can_dash = true
 
-export (Dictionary) var dna = {
+export (Array) var preset_genotype = []
+export (Array) var preset_phenotype = []
+
+var dna = {
 	'genotype': {
 		'long-living': false,
 		'fecund': false,
-		'charming': false,
+		'alluring': false,
 		'horn': false,
 		'wings': false,
 		'gills': false,
@@ -27,8 +30,9 @@ export (Dictionary) var dna = {
 	'phenotype': {
 		'long-living': false,
 		'fecund': false,
-		'charming': false,
+		'alluring': false,
 		'horn': false,
+		'wings': false,
 		'gills': false,
 		'scales': false
 	}
@@ -107,6 +111,11 @@ func stop():
 	emit_signal("action_performed", "stop")
 
 func _ready():
+	for trait in preset_genotype:
+		dna['genotype'][trait] = true
+	for trait in preset_phenotype:
+		dna['phenotype'][trait] = true
+	
 	for trait in $Traits.get_children():
 		if not dna['phenotype'][trait.name]:
 			trait.queue_free()
@@ -133,4 +142,17 @@ func zone_entered(type):
 func zone_exited(type):
 	if type == 'water':
 		print('TODO call a method that makes the hero exit the water state')
+	
+func get_gamete():
+	var gamete = {}
+	
+	randomize()
+	
+	for trait in dna['genotype'].keys():
+		if randi() % 2 == 0:
+			gamete[trait] = dna['genotype'][trait]
+		else:
+			gamete[trait] = dna['phenotype'][trait]
+			
+	return gamete
 	

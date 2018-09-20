@@ -8,7 +8,7 @@ extends "res://actors/state_machine/states/state.gd"
 func setup(actor, previous_state):
 	actor.get_parent().reactivate_timer()
 	global.this_player.get_node("life_span").start()
-	$Timer.start($Timer.wait_time)
+	$Timer.start()
 
 func clear():
 	$Timer.stop()

@@ -8,7 +8,7 @@ export (String) var jump = "ui_select"
 export (String) var dash = "ui_cancel"
 
 var current_states = []
-signal copulate(player)
+signal copulate(player, checkpoint)
 
 func _ready():
 	set_process_input(false)
@@ -35,7 +35,7 @@ func _on_Area2D_body_entered(body):
 		body.set_process_input(false)
 		body.set_state("chilling")
 		body.remove_from_group("player")
-		emit_signal("copulate", [body])
+		emit_signal("copulate", body, self)
 		queue_free()
 
 
