@@ -69,12 +69,18 @@ preset_phenotype = [ "horn" ]
 [node name="AI2" parent="Content" instance=ExtResource( 7 )]
 position = Vector2( 609, 336 )
 _sections_unfolded = [ "Collision", "collision", "motion", "preset_genotype", "preset_phenotype" ]
-preset_phenotype = [ "scales" ]
 
 [node name="AI3" parent="Content" instance=ExtResource( 7 )]
 position = Vector2( 1470, 288 )
 _sections_unfolded = [ "Collision", "collision", "motion", "preset_genotype", "preset_phenotype" ]
-preset_phenotype = [ "scales" ]
+
+[node name="AI4" parent="Content" instance=ExtResource( 7 )]
+position = Vector2( 1911, 1470 )
+_sections_unfolded = [ "Collision", "collision", "motion", "preset_genotype", "preset_phenotype" ]
+
+[node name="AI5" parent="Content" instance=ExtResource( 7 )]
+position = Vector2( 1213.77, 1471.5 )
+_sections_unfolded = [ "Collision", "collision", "motion", "preset_genotype", "preset_phenotype" ]
 
 [node name="state_machine" parent="." instance=ExtResource( 8 )]
 actor = NodePath("../Content")
@@ -90,3 +96,5 @@ state_machine = "../"
 [connection signal="copulate" from="Content/AI" to="." method="_on_AI_copulate"]
 [connection signal="copulate" from="Content/AI2" to="." method="_on_AI_copulate"]
 [connection signal="copulate" from="Content/AI3" to="." method="_on_AI_copulate"]
+[connection signal="copulate" from="Content/AI4" to="." method="_on_AI_copulate"]
+[connection signal="copulate" from="Content/AI5" to="." method="_on_AI_copulate"]
