@@ -35,6 +35,25 @@ SLOPE_STOP_SPEED = 200
 SLOPE_MAX_DEGREE = 46.0
 FALL_THRESHOLD = 150.0
 can_dash = true
+dna = {
+"genotype": {
+"charming": false,
+"fecund": false,
+"gills": false,
+"horn": false,
+"long-living": false,
+"scales": false,
+"wings": false
+},
+"phenotype": {
+"charming": false,
+"fecund": false,
+"gills": false,
+"horn": false,
+"long-living": false,
+"scales": false
+}
+}
 left = "ui_left"
 right = "ui_right"
 up = "ui_up"
@@ -43,11 +62,10 @@ jump = "ui_select"
 dash = "ui_cancel"
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -2, -3 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 438, 3, 23, 21 )
+region_rect = Rect2( 602, 84, 17, 19 )
 _sections_unfolded = [ "Region", "Transform", "texture" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -92,6 +110,7 @@ dash_jump_multiplier = 1.4
 MAX_WALL_SPEED = 600
 
 [node name="Label" type="Label" parent="."]
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -138,10 +157,15 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 
-[node name="Horn" type="Area2D" parent="." groups=[
+[node name="Traits" type="Node2D" parent="."]
+
+[node name="horn" type="Node2D" parent="Traits"]
+editor/display_folded = true
+
+[node name="HornArea" type="Area2D" parent="Traits/horn" groups=[
 "breaker",
 ]]
-position = Vector2( 0, -33 )
+position = Vector2( 0, -27 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -149,10 +173,21 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Horn"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Traits/horn/HornArea"]
 position = Vector2( 0, -8 )
 shape = SubResource( 2 )
 _sections_unfolded = [ "shape" ]
+
+[node name="Sprite" type="Sprite" parent="Traits/horn"]
+position = Vector2( 0, -33 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 627, 79, 5, 7 )
+_sections_unfolded = [ "Region", "Transform" ]
 
 [connection signal="state_changed" from="state_machine" to="Label" method="_on_state_machine_state_changed"]

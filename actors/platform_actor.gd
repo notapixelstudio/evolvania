@@ -14,7 +14,7 @@ export (float) var FALL_THRESHOLD = 100
 
 export (bool) var can_dash = true
 
-var dna = {
+export (Dictionary) var dna = {
 	'genotype': {
 		'long-living': false,
 		'fecund': false,
@@ -104,6 +104,11 @@ func stop():
 	emit_signal("action_performed", "stop")
 
 func _ready():
+	for trait in $Traits.get_children():
+		if not dna['phenotype'][trait.name]:
+			trait.queue_free()
+			
+	
 	state_machine = $state_machine
 	set_state(starting_state)
 	
