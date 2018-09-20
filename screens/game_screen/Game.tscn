@@ -19,7 +19,6 @@ script = ExtResource( 1 )
 visible = false
 
 [node name="Content" type="Node2D" parent="."]
-editor/display_folded = true
 position = Vector2( 8400, 8400 )
 _sections_unfolded = [ "Transform" ]
 
@@ -110,3 +109,4 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 [connection signal="copulate" from="Content/AI" to="." method="_on_AI_copulate"]
 [connection signal="copulate" from="Content/AI2" to="." method="_on_AI_copulate"]
 [connection signal="copulate" from="Content/AI3" to="." method="_on_AI_copulate"]
+[connection signal="timeout" from="state_machine/play/Timer" to="." method="_on_Timer_timeout"]

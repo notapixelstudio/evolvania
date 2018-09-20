@@ -25,6 +25,4 @@ func animate_value(start, end):
 		pass
 
 func update_count_text(value):
-	print("daaaaii")
-	print(value)
 	$Count/Number.text = str(round(value)) + '/' + str(maximum)
