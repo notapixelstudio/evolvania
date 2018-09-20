@@ -63,19 +63,23 @@ position = Vector2( -1701, 1764 )
 position = Vector2( 231, 504 )
 
 [node name="AI" parent="Content" instance=ExtResource( 7 )]
-position = Vector2( 1176, 714 )
+position = Vector2( 1911, 1479.5 )
+_sections_unfolded = [ "Collision", "collision", "motion", "preset_genotype", "preset_phenotype" ]
+preset_phenotype = [ "horn" ]
+
+[node name="AI4" parent="Content" instance=ExtResource( 7 )]
+position = Vector2( 2835, 1479.5 )
 _sections_unfolded = [ "Collision", "collision", "motion", "preset_genotype", "preset_phenotype" ]
 preset_phenotype = [ "horn" ]
 
 [node name="AI2" parent="Content" instance=ExtResource( 7 )]
-position = Vector2( 609, 336 )
+position = Vector2( 1113, 1484 )
 _sections_unfolded = [ "Collision", "collision", "motion", "preset_genotype", "preset_phenotype" ]
 preset_phenotype = [ "scales" ]
 
 [node name="AI3" parent="Content" instance=ExtResource( 7 )]
-position = Vector2( 1470, 288 )
+position = Vector2( 1365, 1475 )
 _sections_unfolded = [ "Collision", "collision", "motion", "preset_genotype", "preset_phenotype" ]
-preset_phenotype = [ "scales" ]
 
 [node name="state_machine" parent="." instance=ExtResource( 8 )]
 actor = NodePath("../Content")
@@ -107,6 +111,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 [connection signal="update_counter" from="." to="CanvasLayer/Interface" method="_on_Game_update_counter"]
 [connection signal="update_time" from="." to="CanvasLayer/Interface" method="_on_Game_update_time"]
 [connection signal="copulate" from="Content/AI" to="." method="_on_AI_copulate"]
+[connection signal="copulate" from="Content/AI4" to="." method="_on_AI_copulate"]
 [connection signal="copulate" from="Content/AI2" to="." method="_on_AI_copulate"]
 [connection signal="copulate" from="Content/AI3" to="." method="_on_AI_copulate"]
 [connection signal="timeout" from="state_machine/play/Timer" to="." method="_on_Timer_timeout"]
