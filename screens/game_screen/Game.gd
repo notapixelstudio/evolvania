@@ -82,21 +82,23 @@ func _on_AI_copulate(player, checkpoint):
 			n.remove_from_group("player")
 			node_to_eliminate.append(n)
 	last_checkpoint = player.position
-	create_children(player, checkpoint)
+	
+	var children_amount
+	if player.dna['phenotype']['fecund']:
+		children_amount = 4
+	else:
+		children_amount = 3
+	create_children(player, checkpoint, children_amount)
+	
 	player.queue_free()
 	state_machine.set_state("selection")
 	for node in node_to_eliminate:
 		node.queue_free()
 	
-func create_children(mother, father):
-	print('mother dna')
-	print(mother.dna)
-	print('father dna')
-	print(father.dna)
-	
-	for i in range(0, 3):
+func create_children(mother, father, amount):
+	for i in range(0, amount):
 		var p = player.instance()
-		p.position = last_checkpoint + Vector2(60, 0)*i
+		p.position = last_checkpoint + Vector2(60, 0)*i - Vector2(30, 0)*amount
 		p.dna = new_dna(mother.get_gamete(), father.get_gamete())
 		p.add_to_group("player")
 		$Content.add_child(p)
