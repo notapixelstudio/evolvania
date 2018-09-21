@@ -132,10 +132,9 @@ func _physics_process(delta):
 	state_machine.state.process(self, delta)
 	
 func zone_entered(type):
-	if type == 'lava':
+	if type == 'lava' or type == 'spikes':
 		if not dna['phenotype']['scales']:
 			die()
-		# FIXME touching lava when having scales should have an effect
 	elif type == 'water':
 		if dna['phenotype']['gills']:
 			swim()
