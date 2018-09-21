@@ -142,8 +142,8 @@ func zone_entered(type):
 			die()
 	
 func zone_exited(type):
-	if type == 'water':
-		pass
+	if type == 'water_surface':
+		idle()
 		#idle()
 	
 func get_gamete():
