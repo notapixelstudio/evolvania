@@ -10,7 +10,15 @@ export (String) var dash = "ui_cancel"
 signal dead
 signal collect
 
-var life_span = 12
+var life_span
+
+func _ready():
+	if dna['phenotype']['long-living']:
+		life_span = 90
+	else:
+		life_span = 60
+		
+	$life_span.wait_time = life_span
 
 func handle_input():
 	pass
