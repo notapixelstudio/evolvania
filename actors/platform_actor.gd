@@ -123,7 +123,6 @@ func _ready():
 		if not dna['phenotype'][trait.name]:
 			trait.queue_free()
 			
-	
 	state_machine = $state_machine
 	set_state(starting_state)
 	
@@ -144,7 +143,6 @@ func zone_entered(type):
 func zone_exited(type):
 	if type == 'water_surface':
 		idle()
-		#idle()
 	
 func get_gamete():
 	var gamete = {}

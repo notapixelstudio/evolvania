@@ -25,8 +25,8 @@ func setup(actor, previous_state):
 	children[index].set_state("selected")
 	children[index].get_node("Camera2D").current = true
 
-func clear():
-	this_actor.get_parent().get_node('CanvasLayer/Interface/Bars').visible = true
+func clear(actor):
+	actor.get_parent().get_node('CanvasLayer/Interface/Bars').visible = true
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():

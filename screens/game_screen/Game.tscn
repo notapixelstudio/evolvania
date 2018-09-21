@@ -205,11 +205,9 @@ actor = NodePath("../Content")
 
 [node name="selection" type="Node" parent="state_machine"]
 script = ExtResource( 9 )
-state_machine = "../"
 
 [node name="play" type="Node" parent="state_machine"]
 script = ExtResource( 10 )
-state_machine = "../"
 
 [node name="Timer" type="Timer" parent="state_machine/play"]
 process_mode = 1

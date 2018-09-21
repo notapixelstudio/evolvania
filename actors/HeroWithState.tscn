@@ -34,8 +34,8 @@ _sections_unfolded = [ "Collision", "collision", "dna", "motion" ]
 GRAVITY = 75.0
 FLOOR_NORMAL = Vector2( 0, -1 )
 SLOPE_STOP_SPEED = 200
-SLOPE_MAX_DEGREE = 46.0
-FALL_THRESHOLD = 150.0
+SLOPE_MAX_DEGREE = 46
+FALL_THRESHOLD = 51
 can_dash = true
 preset_genotype = [  ]
 preset_phenotype = [  ]
@@ -90,61 +90,50 @@ _sections_unfolded = [ "shape" ]
 
 [node name="dash" type="Node" parent="state_machine"]
 script = ExtResource( 6 )
-state_machine = "../"
 dash_length = 300
 dash_speed = 600
 
 [node name="walk" type="Node" parent="state_machine"]
 script = ExtResource( 7 )
-state_machine = "../"
-walk_speed = 600
+speed = 400
 
 [node name="fall_threshold" type="Timer" parent="state_machine/walk"]
 process_mode = 1
-wait_time = 0.171664
+wait_time = 0.0616788
 one_shot = false
 autostart = false
 
 [node name="idle" type="Node" parent="state_machine"]
 script = ExtResource( 8 )
-state_machine = "../"
 
 [node name="fall" type="Node" parent="state_machine"]
 script = ExtResource( 9 )
-state_machine = "../"
 MAX_FALL_SPEED = 3000
 
 [node name="jump" type="Node" parent="state_machine"]
 script = ExtResource( 10 )
-state_machine = "../"
 jump_height = 1400
 max_jumps = 1
 
 [node name="wall" type="Node" parent="state_machine"]
 script = ExtResource( 11 )
-state_machine = "../"
 wall_jump = 800
 dash_jump_multiplier = 1.4
 MAX_WALL_SPEED = 600
 
 [node name="dead" type="Node" parent="state_machine"]
 script = ExtResource( 12 )
-state_machine = "../"
 
 [node name="chilling" type="Node" parent="state_machine"]
 script = ExtResource( 13 )
-state_machine = "../"
 
 [node name="swim" type="Node" parent="state_machine"]
 script = ExtResource( 14 )
-state_machine = "../"
 
 [node name="selected" type="Node" parent="state_machine"]
 script = ExtResource( 15 )
-state_machine = "../"
 
 [node name="Label" type="Label" parent="."]
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0

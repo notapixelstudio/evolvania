@@ -11,6 +11,6 @@ func setup(actor, previous_state):
 	global.this_player.get_node("life_span").start()
 	$Timer.start()
 
-func clear():
-	global.this_player.get_node("life_span").stop()
+func clear(actor):
 	$Timer.stop()
+	global.this_player.get_node("life_span").stop()
