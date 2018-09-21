@@ -198,6 +198,7 @@ preset_genotype = [ "long-living", "fecund", "alluring" ]
 preset_phenotype = [ "horn", "wings" ]
 
 [node name="state_machine" parent="." instance=ExtResource( 8 )]
+editor/display_folded = true
 actor = NodePath("../Content")
 
 [node name="selection" type="Node" parent="state_machine"]
