@@ -10,7 +10,7 @@ func setup(actor, previous_state):
 	traits.text = ""
 	for trait in actor.dna["phenotype"]:
 		if actor.dna["phenotype"][trait]:
-			traits.text += trait +"\n"
+			traits.text += trait.to_upper() +"\n"
 	actor.get_node("traits").visible = true
 	this_actor = actor
 	
