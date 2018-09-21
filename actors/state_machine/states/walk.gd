@@ -4,7 +4,6 @@ export (int) var walk_speed = 600
 
 func setup(actor, previous_state):
 	actor.velocity.x = walk_speed * actor.direction
-	
 	$fall_threshold.connect("timeout", self, "_on_fall_threshold_timeout", [actor])
 	actor.emit_signal("perform_action", "walk")
 	

@@ -1,11 +1,10 @@
+.idea
+*.DS_Store
 # Godot-specific ignores
 .import/
 export.cfg
-.fscache
-
-# System/tool-specific ignores
+export_presets.cfg
+.mono/
 .directory
 *~
-
-# IntelliJ-speficic
-.idea
+.vscode
