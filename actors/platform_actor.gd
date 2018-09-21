@@ -10,7 +10,7 @@ export (float) var GRAVITY = 50
 export (Vector2) var FLOOR_NORMAL = Vector2(0, -1)
 export (float) var SLOPE_STOP_SPEED = 200
 export (float) var SLOPE_MAX_DEGREE = 46
-export (float) var FALL_THRESHOLD = 100
+export (float) var FALL_THRESHOLD = 51
 
 export (bool) var can_dash = true
 
@@ -132,10 +132,9 @@ func _physics_process(delta):
 	state_machine.state.process(self, delta)
 	
 func zone_entered(type):
-	if type == 'lava':
+	if type == 'lava' or type == 'spikes':
 		if not dna['phenotype']['scales']:
 			die()
-		# FIXME touching lava when having scales should have an effect
 	elif type == 'water':
 		if dna['phenotype']['gills']:
 			swim()
@@ -143,8 +142,8 @@ func zone_entered(type):
 			die()
 	
 func zone_exited(type):
-	if type == 'water':
-		pass
+	if type == 'water_surface':
+		idle()
 		#idle()
 	
 func get_gamete():

@@ -24,11 +24,16 @@ func input_process(actor, event):
 	elif event.is_action_released(actor.left):
 		actor.direction = -1
 		actor.velocity.x = 0
-		
+
+	if event.is_action_released(actor.up):
+		actor.velocity.y = 0
+	elif event.is_action_released(actor.down):
+		actor.velocity.y = 0		
 	#if event.is_action_pressed(actor.jump):
 	#	actor.jump()
 	
 func process(actor, delta):
+	actor.velocity.y = min(0, actor.velocity.y - 30)
 	if actor.is_on_wall():
 		actor.wall_slide()
 		

@@ -1,8 +1,23 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://screens/basic_screen.tscn" type="PackedScene" id=1]
 [ext_resource path="res://screens/main_screen/main_screen.gd" type="Script" id=2]
 [ext_resource path="res://assets/theme/theme.tres" type="Theme" id=3]
+
+[sub_resource type="DynamicFontData" id=1]
+
+hinting = 2
+font_path = "res://assets/theme/fonts/Uroob.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 60
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = SubResource( 1 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings", "font_data" ]
 
 [node name="MainScreen" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -27,13 +42,34 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "Game Title here"
+custom_fonts/font = SubResource( 2 )
+text = "Evolvania"
 align = 1
 valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Theme", "custom_fonts" ]
+_sections_unfolded = [ "custom_fonts", "custom_fonts/font" ]
+
+[node name="Label" type="Label" parent="GameTitle/Label" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 260.0
+margin_top = 66.0
+margin_right = 415.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Made for #godotwildjam"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [node name="Menu" type="VBoxContainer" parent="." index="4"]
 editor/display_folded = true
@@ -41,10 +77,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 406.0
-margin_top = 336.0
-margin_right = 583.0
-margin_bottom = 525.0
+margin_left = 504.0
+margin_top = 444.0
+margin_right = 681.0
+margin_bottom = 633.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1

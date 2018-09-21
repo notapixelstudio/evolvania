@@ -12,7 +12,6 @@ func setup(actor, previous_state):
 	children = []
 	index=0
 	for n in actor.get_children():
-		print(n.get_groups())
 		if n.is_in_group("player"):
 			children.append(n)
 			n.set_process_input(false)
@@ -21,6 +20,8 @@ func setup(actor, previous_state):
 	if len(children) <= 0 :
 		actor.get_parent().game_over()
 		return
+	actor.get_parent().get_node("CanvasLayer/Istructions").text = str(len(children)) + " lives left."
+	actor.get_parent().get_node("CanvasLayer/Istructions").visible = true
 	children[index].set_state("selected")
 	children[index].get_node("Camera2D").current = true
 
@@ -54,5 +55,4 @@ func input_process(actor, event):
 		children[index].connect("dead", actor, "on_player_death")
 		children[index].connect("collect", actor, "on_collect_gems")		
 		global.this_player = children[index]
-		print(global.this_player)
 		actor.state_machine.set_state("play")

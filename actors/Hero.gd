@@ -10,7 +10,15 @@ export (String) var dash = "ui_cancel"
 signal dead
 signal collect
 
-var life_span = 12
+var life_span
+
+func _ready():
+	if dna['phenotype']['long-living']:
+		life_span = 90
+	else:
+		life_span = 60
+		
+	$life_span.wait_time = life_span
 
 func handle_input():
 	pass
@@ -28,7 +36,6 @@ func _on_life_span_timeout():
 
 
 func _on_collector_area_entered(area):
-	print(area.get_groups())
 	if area.is_in_group("collectible"):
 		emit_signal("collect")
 		area.queue_free()
