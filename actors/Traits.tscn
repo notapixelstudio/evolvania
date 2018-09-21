@@ -9,24 +9,32 @@ extents = Vector2( 10, 20 )
 
 [node name="Traits" type="Node2D"]
 
-[node name="fecund" type="Sprite" parent="."]
-position = Vector2( 0, 4.5 )
+[node name="wings" type="Sprite" parent="."]
+position = Vector2( 0, -5.5 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 646, 91, 19, 8 )
+region_rect = Rect2( 599, 105, 25, 7 )
 _sections_unfolded = [ "Region", "Transform" ]
 
 [node name="alluring" type="Sprite" parent="."]
-position = Vector2( 0, -8.5 )
+position = Vector2( 0, -9 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 631, 88, 9, 3 )
 _sections_unfolded = [ "Region", "Transform" ]
 
+[node name="fecund" type="Sprite" parent="."]
+position = Vector2( 0, 5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 646, 91, 19, 8 )
+_sections_unfolded = [ "Region", "Transform" ]
+
 [node name="long-living" type="Sprite" parent="."]
-position = Vector2( 0, 1.5 )
+position = Vector2( 0, 2 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )
 region_enabled = true
@@ -34,6 +42,7 @@ region_rect = Rect2( 653, 82, 5, 2 )
 _sections_unfolded = [ "Region", "Transform" ]
 
 [node name="horn" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="HornArea" type="Area2D" parent="horn" groups=[
 "breaker",
@@ -64,10 +73,18 @@ region_rect = Rect2( 627, 79, 5, 7 )
 _sections_unfolded = [ "Region", "Transform" ]
 
 [node name="scales" type="Sprite" parent="."]
-position = Vector2( 0, 16.5 )
+position = Vector2( 0, 17 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 629, 94, 13, 8 )
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="gills" type="Sprite" parent="."]
+position = Vector2( 0, -5.5 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 627, 106, 17, 6 )
 _sections_unfolded = [ "Region", "Transform" ]
 
