@@ -12,7 +12,6 @@ func setup(actor, previous_state):
 	children = []
 	index=0
 	for n in actor.get_children():
-		print(n.get_groups())
 		if n.is_in_group("player"):
 			children.append(n)
 			n.set_process_input(false)
