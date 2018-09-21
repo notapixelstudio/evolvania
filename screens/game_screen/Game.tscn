@@ -19,6 +19,7 @@ script = ExtResource( 1 )
 visible = false
 
 [node name="Content" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 8400, 8400 )
 _sections_unfolded = [ "Transform" ]
 
@@ -104,23 +105,27 @@ position = Vector2( -3213, 1134 )
 [node name="AI" parent="Content" instance=ExtResource( 7 )]
 position = Vector2( -5575, -94.5 )
 _sections_unfolded = [ "Collision", "collision", "motion", "preset_genotype", "preset_phenotype" ]
+FALL_THRESHOLD = 51
 preset_genotype = [ "long-living", "fecund", "alluring", "horn" ]
 preset_phenotype = [ "horn" ]
 
 [node name="AI4" parent="Content" instance=ExtResource( 7 )]
 position = Vector2( 5922, 1480 )
 _sections_unfolded = [ "Collision", "collision", "motion", "preset_genotype", "preset_phenotype" ]
+FALL_THRESHOLD = 51
 preset_phenotype = [ "horn" ]
 
 [node name="AI2" parent="Content" instance=ExtResource( 7 )]
 position = Vector2( -147, 210 )
 _sections_unfolded = [ "Collision", "collision", "motion", "preset_genotype", "preset_phenotype" ]
+FALL_THRESHOLD = 51
 preset_genotype = [ "gills" ]
 preset_phenotype = [ "scales", "gills" ]
 
 [node name="MountainMan" parent="Content" instance=ExtResource( 7 )]
 position = Vector2( -2525, 1228 )
 _sections_unfolded = [ "Collision", "collision", "motion", "preset_genotype", "preset_phenotype" ]
+FALL_THRESHOLD = 51
 preset_phenotype = [ "horn" ]
 
 [node name="state_machine" parent="." instance=ExtResource( 8 )]
