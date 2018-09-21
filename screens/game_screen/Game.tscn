@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://screens/game_screen/Game.gd" type="Script" id=1]
 [ext_resource path="res://debug/FramesPerSecond/FPS.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://screens/game_screen/play.gd" type="Script" id=10]
 [ext_resource path="res://interface/Interface.tscn" type="PackedScene" id=11]
 [ext_resource path="res://interface/theme/default_theme.tres" type="Theme" id=12]
+[ext_resource path="res://assets/Alexander Ehlers - Warped.wav" type="AudioStream" id=13]
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
@@ -20,6 +21,7 @@ script = ExtResource( 1 )
 visible = false
 
 [node name="Content" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 8400, 8400 )
 _sections_unfolded = [ "Transform" ]
 
@@ -241,6 +243,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 4
 theme = ExtResource( 12 )
 text = "TOT vite rimaste."
+align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -262,9 +265,19 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 text = "Choose your character"
+align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+stream_paused = false
+mix_target = 0
+bus = "Master"
 
 [connection signal="reset_lifebar" from="." to="CanvasLayer/Interface" method="_on_Game_reset_lifebar"]
 [connection signal="update_counter" from="." to="CanvasLayer/Interface" method="_on_Game_update_counter"]

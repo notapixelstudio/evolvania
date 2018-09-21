@@ -16,8 +16,8 @@ _global_script_class_icons={
 [application]
 
 config/name="evolvania"
-run/main_scene="res://screens/game_screen/Game.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://screens/main_screen/main_screen.tscn"
+config/icon="res://logo.png"
 
 [autoload]
 
