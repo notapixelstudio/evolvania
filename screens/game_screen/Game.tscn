@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://screens/game_screen/Game.gd" type="Script" id=1]
 [ext_resource path="res://debug/FramesPerSecond/FPS.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://screens/game_screen/selection.gd" type="Script" id=9]
 [ext_resource path="res://screens/game_screen/play.gd" type="Script" id=10]
 [ext_resource path="res://interface/Interface.tscn" type="PackedScene" id=11]
+[ext_resource path="res://interface/theme/default_theme.tres" type="Theme" id=12]
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
@@ -194,6 +195,48 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="Interface" parent="CanvasLayer" instance=ExtResource( 11 )]
+
+[node name="Istructions" type="Label" parent="CanvasLayer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 597.0
+margin_top = 21.0
+margin_right = 929.0
+margin_bottom = 94.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+theme = ExtResource( 12 )
+text = "TOT vite rimaste."
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Theme" ]
+
+[node name="Label" type="Label" parent="CanvasLayer/Istructions"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 2.0
+margin_top = 37.0
+margin_right = 42.0
+margin_bottom = 72.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Choose your character"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [connection signal="reset_lifebar" from="." to="CanvasLayer/Interface" method="_on_Game_reset_lifebar"]
 [connection signal="update_counter" from="." to="CanvasLayer/Interface" method="_on_Game_update_counter"]
