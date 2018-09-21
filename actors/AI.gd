@@ -10,6 +10,8 @@ export (String) var dash = "ui_cancel"
 var current_states = []
 signal copulate(player, checkpoint)
 
+var active = null
+
 func _ready():
 	set_process_input(false)
 	for s in state_machine.get_children():
@@ -32,12 +34,33 @@ func _on_change_state_timeout():
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("player"):
-		body.set_process_input(false)
-		body.set_state("chilling")
-		body.remove_from_group("player")
-		emit_signal("copulate", body, self)
+		active = body
+		$superlove2.visible = true
+		
+func _process(delta):
+	if active and is_instance_valid(active) and Input.is_action_just_pressed('ui_select'):
+		active.set_process_input(false)
+		active.set_state("chilling")
+		active.remove_from_group("player")
+		emit_signal("copulate", active, self)
 		queue_free()
 
 
 func _on_Area2D_body_exited(body):
-	pass # Replace with function body.
+	if body.is_in_group("player"):
+		active = null
+		$superlove2.visible = false
+
+
+func _on_LoveArea_body_entered(body):
+	if body.is_in_group("player"):
+		$love.visible = true
+
+
+func _on_LoveArea_body_exited(body):
+	if body.is_in_group("player"):
+		$love.visible = false
+
+
+func _on_LoveTimer_timeout():
+	$superlove2/love2.visible = not $superlove2/love2.visible
