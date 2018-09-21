@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://actors/AI.gd" type="Script" id=1]
 [ext_resource path="res://assets/tiles/spritesheet.png" type="Texture" id=2]
@@ -17,6 +17,11 @@
 
 custom_solver_bias = 0.0
 extents = Vector2( 26.4406, 31.9916 )
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 235.077
 
 [node name="AI" type="KinematicBody2D"]
 input_pickable = false
@@ -101,6 +106,7 @@ script = ExtResource( 10 )
 state_machine = "../"
 
 [node name="Label" type="Label" parent="."]
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -144,17 +150,53 @@ audio_bus_name = "Master"
 shape = SubResource( 1 )
 _sections_unfolded = [ "shape" ]
 
-[node name="checkpoint" type="Sprite" parent="."]
-position = Vector2( -0.232376, -55.7879 )
+[node name="love" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1, -65 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 376.857, 77.831, 9.25, 10.5 )
+region_rect = Rect2( 441, 98, 19, 16 )
+_sections_unfolded = [ "Region", "Transform", "texture" ]
+
+[node name="superlove2" type="Node2D" parent="."]
+visible = false
+
+[node name="love2" type="Sprite" parent="superlove2"]
+visible = false
+position = Vector2( 1, -65 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 441, 98, 19, 16 )
 _sections_unfolded = [ "Region", "Transform", "texture" ]
 
 [node name="Traits" parent="." instance=ExtResource( 12 )]
 position = Vector2( 1, 3 )
 
+[node name="LoveArea" type="Area2D" parent="."]
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LoveArea"]
+shape = SubResource( 2 )
+_sections_unfolded = [ "shape" ]
+
+[node name="LoveTimer" type="Timer" parent="."]
+process_mode = 1
+wait_time = 0.2
+one_shot = false
+autostart = true
+
 [connection signal="state_changed" from="state_machine" to="Label" method="_on_state_machine_state_changed"]
 [connection signal="timeout" from="change_state" to="." method="_on_change_state_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="LoveArea" to="." method="_on_LoveArea_body_entered"]
+[connection signal="body_exited" from="LoveArea" to="." method="_on_LoveArea_body_exited"]
+[connection signal="timeout" from="LoveTimer" to="." method="_on_LoveTimer_timeout"]
