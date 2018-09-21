@@ -1,12 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://interface/bar/bar.gd" type="Script" id=1]
 [ext_resource path="res://interface/counter/label_bg.png" type="Texture" id=2]
-[ext_resource path="res://interface/bar/label_HP.png" type="Texture" id=3]
-[ext_resource path="res://interface/theme/default_theme.tres" type="Theme" id=4]
-[ext_resource path="res://interface/bar/bg.png" type="Texture" id=5]
-[ext_resource path="res://interface/bar/fill.png" type="Texture" id=6]
-[ext_resource path="res://interface/bar/texture_progress.gd" type="Script" id=7]
+[ext_resource path="res://interface/theme/default_theme.tres" type="Theme" id=3]
+[ext_resource path="res://interface/bar/bg.png" type="Texture" id=4]
+[ext_resource path="res://interface/bar/fill.png" type="Texture" id=5]
+[ext_resource path="res://interface/bar/texture_progress.gd" type="Script" id=6]
 
 [sub_resource type="Animation" id=1]
 
@@ -114,23 +113,29 @@ size_flags_vertical = 1
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Rect" ]
 
-[node name="Title" type="TextureRect" parent="Count"]
+[node name="Title" type="Label" parent="Count"]
 anchor_left = 0.0
 anchor_top = 0.5
 anchor_right = 0.0
 anchor_bottom = 0.5
-margin_top = -20.5
-margin_right = 49.0
-margin_bottom = 19.5
+margin_left = 3.0
+margin_top = -16.0
+margin_right = 54.0
+margin_bottom = 57.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 1
+mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 3 )
-stretch_mode = 4
-_sections_unfolded = [ "Visibility" ]
+size_flags_vertical = 4
+theme = ExtResource( 3 )
+text = "Yrs
+"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Theme", "Visibility" ]
 
 [node name="Number" type="Label" parent="Count"]
 anchor_left = 1.0
@@ -147,7 +152,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-theme = ExtResource( 4 )
+theme = ExtResource( 3 )
 text = "12/34"
 align = 2
 valign = 2
@@ -179,16 +184,16 @@ exp_edit = false
 rounded = false
 allow_greater = false
 allow_lesser = false
-texture_under = ExtResource( 5 )
+texture_under = ExtResource( 4 )
 texture_over = null
-texture_progress = ExtResource( 6 )
+texture_progress = ExtResource( 5 )
 tint_under = Color( 1, 1, 1, 1 )
 tint_over = Color( 1, 1, 1, 1 )
 tint_progress = Color( 1, 1, 1, 1 )
 radial_fill_degrees = 360.0
 radial_center_offset = Vector2( 0, 0 )
 nine_patch_stretch = false
-script = ExtResource( 7 )
+script = ExtResource( 6 )
 _sections_unfolded = [ "Textures" ]
 
 [node name="Tween" type="Tween" parent="."]

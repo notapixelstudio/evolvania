@@ -19,6 +19,7 @@ script = ExtResource( 1 )
 visible = false
 
 [node name="Content" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 8400, 8400 )
 _sections_unfolded = [ "Transform" ]
 
