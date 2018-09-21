@@ -10,7 +10,7 @@ export (float) var GRAVITY = 50
 export (Vector2) var FLOOR_NORMAL = Vector2(0, -1)
 export (float) var SLOPE_STOP_SPEED = 200
 export (float) var SLOPE_MAX_DEGREE = 46
-export (float) var FALL_THRESHOLD = 100
+export (float) var FALL_THRESHOLD = 51
 
 export (bool) var can_dash = true
 
