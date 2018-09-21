@@ -1,8 +1,11 @@
 extends "state.gd"
 
 export (int) var speed = 400
+var grace_time 
+const MAX_GRACE_TIME = 0.4
 
 func setup(actor, previous_state):
+	grace_time = 0
 	actor.velocity.x = speed * actor.direction
 	actor.emit_signal("action_performed", "walk")
 	$fall_threshold.connect("timeout", self, "_on_coyotte_fall_timeout", [actor])
@@ -35,9 +38,10 @@ func input_process(actor, event):
 
 func process(actor, delta):
 	actor.velocity.y += actor.GRAVITY
-
-	if actor.velocity.y > actor.FALL_THRESHOLD:
+	grace_time += delta
+	if grace_time > MAX_GRACE_TIME:
 		$fall_threshold.start()
+		actor.fall()
 		
 	if not $fall_threshold.is_stopped() and actor.is_on_wall():
 		actor.wall_slide()
@@ -50,5 +54,6 @@ func process(actor, delta):
 		actor.velocity = Vector2(speed * actor.direction, 0)
 	
 func _on_coyotte_fall_timeout(actor):
+	print("now")
 	actor.fall()
 	

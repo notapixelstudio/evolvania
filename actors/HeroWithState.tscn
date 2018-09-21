@@ -99,7 +99,7 @@ speed = 400
 
 [node name="fall_threshold" type="Timer" parent="state_machine/walk"]
 process_mode = 1
-wait_time = 0.0616788
+wait_time = 1.0
 one_shot = false
 autostart = false
 
