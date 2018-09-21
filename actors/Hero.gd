@@ -36,7 +36,6 @@ func _on_life_span_timeout():
 
 
 func _on_collector_area_entered(area):
-	print(area.get_groups())
 	if area.is_in_group("collectible"):
 		emit_signal("collect")
 		area.queue_free()
