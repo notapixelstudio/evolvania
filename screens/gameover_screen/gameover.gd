@@ -1,7 +1,7 @@
 extends "res://screens/basic_screen.gd"
 
 func _input(event):
-	if event is InputEventMouseButton:
+	if event:
 		change_scene()
 
 func _ready():
