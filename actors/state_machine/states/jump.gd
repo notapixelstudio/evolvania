@@ -13,7 +13,6 @@ func setup(actor, previous_state):
 	
 	was_dashing = false
 	in_air_speed = get_node("../walk").speed
-	print("from " + previous_state.name)
 	match previous_state.name:
 		"idle":
 			jumps = max_jumps

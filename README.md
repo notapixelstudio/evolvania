@@ -1,10 +1,28 @@
-# Evolvania
+# (Evolvania)[https://itch.io/jam/godot-wild-jam/rate/307671]
 
-nella cartella actors'è la logica dei personaggi. Nella scena Hero puoi vedere che ogni personaggio ha oltre al nodo sulla collision shape e lo sprite anche lo StateMachine.
+created for the godot-wild-jam
 
-I Nodi li' dentro sono gli stati possibili.
-La scena pickup.tscn è il powerup. Se ad attraversarlo è il player (gruppo per la scena/nodo dell'actor) allora attiva la `add_state` che aggiunge un nuovo nodo (stato) allo state_machine del player. La logica sta tutto dentro i file del folder state_machine/states.
-I pickup nodes devono chiamarsi ESATTAMENTE come il nome dello stato (nonchè il `file.gd`).
+THEME was Evolution.
 
-Ci sono alcuni bug ... ma dovrebbe andar bene.
-Se non vogliamo far fare una cosa a uno dei personaggi, il nodo di quello stato, non deve essere presente nel suo state_machine.
+The idea of the game still stand: a platform in which every character bring some abilities, mating with them will generate their heir that will bring their genetics. Depending on the combination you could at the end collect all the gems (that is the final purpose of the game).
+
+It doesn't really have a "YOU WIN" screen either. Hopefully in future versions
+
+Explore the world and collect all 13 gems. Find a mate as fast as you can, because your lifetime is limited!
+
+You start with 3 lives, but each one has different abilities. Choose the one that suits you, and carry your genetic material with you. When you mate, a new generation is born, combining your abilities with the ones of your partner.
+
+Different abilities are found according to the environment your potential mates live in, and different zones are unlocked by using specific abilities (that's  where the -vania in Evolvania comes from).
+
+(The map is incomplete and the gameplay is very raw, but we hope the prototype is enough to show you the basic idea)
+Created by notapixelstudio: Salvo & Matteo
+
+Credits:
+
+music by: https://opengameart.org/content/free-music-pack
+
+Art by: Kenney https://kenney.nl/
+
+Inspiration in platformer mechanics: PigDev (https://twitter.com/pigdev)
+
+Inspiration in Interface: GDQuest (https://twitter.com/NathanGDquest)

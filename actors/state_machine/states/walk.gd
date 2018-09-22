@@ -54,6 +54,5 @@ func process(actor, delta):
 		actor.velocity = Vector2(speed * actor.direction, 0)
 	
 func _on_coyotte_fall_timeout(actor):
-	print("now")
 	actor.fall()
 	
