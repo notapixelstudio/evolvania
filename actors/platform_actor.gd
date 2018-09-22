@@ -112,6 +112,9 @@ func wall_slide():
 	
 func swim():
 	set_state("swim")
+
+func floating():
+	set_state("float")
 	
 func stop():
 	emit_signal("action_performed", "stop")
@@ -146,7 +149,7 @@ func zone_entered(type):
 func zone_exited(type):
 	if type == 'water_surface':
 		if state_machine.state.name == "swim":
-			idle()
+			floating()
 	
 func get_gamete():
 	var gamete = {}

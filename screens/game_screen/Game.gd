@@ -22,7 +22,7 @@ func _ready():
 		p.add_to_group("player")
 		
 		if i == 0:
-			p.dna['phenotype']['fecund'] = true
+			p.dna['phenotype']['wings'] = true
 			p.dna['genotype']['fecund'] = true
 		elif i == 1:
 			p.dna['phenotype']['alluring'] = true
