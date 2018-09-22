@@ -8,11 +8,11 @@ func setup(actor, previous_state):
 	grace_time = 0
 	actor.velocity.x = speed * actor.direction
 	actor.emit_signal("action_performed", "walk")
-	$fall_threshold.connect("timeout", self, "_on_coyotte_fall_timeout", [actor])
+	#$fall_threshold.connect("timeout", self, "_on_coyotte_fall_timeout", [actor])
 	
 func clear(actor):
-	$fall_threshold.disconnect("timeout", self, "_on_coyotte_fall_timeout")
-	
+	#$fall_threshold.disconnect("timeout", self, "_on_coyotte_fall_timeout")
+	pass
 func input_process(actor, event):
 	if event.is_action_pressed(actor.jump):
 		actor.jump()

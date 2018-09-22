@@ -17,6 +17,9 @@ export (bool) var can_dash = true
 export (Array) var preset_genotype = []
 export (Array) var preset_phenotype = []
 
+const GRACE_TIME = 0.4
+const JUMP_BUFFER = 0.1
+
 var dna = {
 	'genotype': {
 		'long-living': false,
@@ -142,7 +145,8 @@ func zone_entered(type):
 	
 func zone_exited(type):
 	if type == 'water_surface':
-		idle()
+		if state_machine.state.name == "swim":
+			idle()
 	
 func get_gamete():
 	var gamete = {}
