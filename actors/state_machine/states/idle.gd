@@ -20,6 +20,9 @@ func input_process(actor, event):
 	
 func process(actor, delta):
 	actor.velocity.y += actor.GRAVITY
-	if actor.velocity.y > actor.FALL_THRESHOLD:
-		actor.fall()
+	if actor.is_on_floor():
+		return
+	else:
+		if actor.velocity.y > actor.FALL_THRESHOLD:
+			actor.fall()
 	

@@ -33,7 +33,9 @@ func input_process(actor, event):
 	#	actor.jump()
 	
 func process(actor, delta):
-	actor.velocity.y = min(0, actor.velocity.y - 30)
+	if actor.velocity.y > -100:
+		actor.velocity.y = min(0, actor.velocity.y - actor.GRAVITY)
+		
 	if actor.is_on_wall():
 		actor.wall_slide()
 		

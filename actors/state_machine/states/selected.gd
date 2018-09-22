@@ -15,10 +15,10 @@ func setup(actor, previous_state):
 	this_actor = actor
 	
 # Called when the node enters the scene tree for the first time.
-func clear():
-	this_actor.get_node("arrow").visible = false
-	this_actor.get_node("traits").visible = false
-	this_actor.get_node("Camera2D").current = false
+func clear(actor):
+	actor.get_node("arrow").visible = false
+	actor.get_node("traits").visible = false
+	actor.get_node("Camera2D").current = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -21,7 +21,6 @@ script = ExtResource( 1 )
 visible = false
 
 [node name="Content" type="Node2D" parent="."]
-editor/display_folded = true
 position = Vector2( 8400, 8400 )
 _sections_unfolded = [ "Transform" ]
 
@@ -205,11 +204,9 @@ actor = NodePath("../Content")
 
 [node name="selection" type="Node" parent="state_machine"]
 script = ExtResource( 9 )
-state_machine = "../"
 
 [node name="play" type="Node" parent="state_machine"]
 script = ExtResource( 10 )
-state_machine = "../"
 
 [node name="Timer" type="Timer" parent="state_machine/play"]
 process_mode = 1

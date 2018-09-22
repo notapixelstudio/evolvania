@@ -6,11 +6,12 @@ export (int) var max_jumps = 1
 var was_dashing = false
 var in_air_speed = 600.0
 
-onready var jumps = max_jumps
+var jumps = max_jumps
 
 func setup(actor, previous_state):
+	jumps = max_jumps
 	was_dashing = false
-	in_air_speed = get_node("../walk").walk_speed
+	in_air_speed = get_node("../walk").speed
 	
 	match previous_state:
 		"idle":
