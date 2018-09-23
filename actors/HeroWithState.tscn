@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://actors/Hero.gd" type="Script" id=1]
 [ext_resource path="res://assets/tiles/spritesheet.png" type="Texture" id=2]
@@ -15,8 +15,9 @@
 [ext_resource path="res://actors/state_machine/states/chilling.gd" type="Script" id=13]
 [ext_resource path="res://actors/state_machine/states/swim.gd" type="Script" id=14]
 [ext_resource path="res://actors/state_machine/states/selected.gd" type="Script" id=15]
-[ext_resource path="res://actors/Label.gd" type="Script" id=16]
-[ext_resource path="res://actors/Traits.tscn" type="PackedScene" id=17]
+[ext_resource path="res://actors/state_machine/states/float.gd" type="Script" id=16]
+[ext_resource path="res://actors/Label.gd" type="Script" id=17]
+[ext_resource path="res://actors/Traits.tscn" type="PackedScene" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -34,8 +35,8 @@ _sections_unfolded = [ "Collision", "collision", "dna", "motion" ]
 GRAVITY = 75.0
 FLOOR_NORMAL = Vector2( 0, -1 )
 SLOPE_STOP_SPEED = 200
-SLOPE_MAX_DEGREE = 46.0
-FALL_THRESHOLD = 150.0
+SLOPE_MAX_DEGREE = 46
+FALL_THRESHOLD = 51
 can_dash = true
 preset_genotype = [  ]
 preset_phenotype = [  ]
@@ -94,58 +95,51 @@ editor/display_folded = true
 
 [node name="dash" type="Node" parent="state_machine"]
 script = ExtResource( 6 )
-state_machine = "../"
 dash_length = 300
 dash_speed = 600
 
 [node name="walk" type="Node" parent="state_machine"]
 script = ExtResource( 7 )
-state_machine = "../"
-walk_speed = 600
+speed = 600
 
 [node name="fall_threshold" type="Timer" parent="state_machine/walk"]
 process_mode = 1
-wait_time = 0.171664
+wait_time = 1.0
 one_shot = false
 autostart = false
 
 [node name="idle" type="Node" parent="state_machine"]
 script = ExtResource( 8 )
-state_machine = "../"
 
 [node name="fall" type="Node" parent="state_machine"]
 script = ExtResource( 9 )
-state_machine = "../"
 MAX_FALL_SPEED = 3000
 
 [node name="jump" type="Node" parent="state_machine"]
 script = ExtResource( 10 )
-state_machine = "../"
 jump_height = 1400
 max_jumps = 1
 
 [node name="wall" type="Node" parent="state_machine"]
 script = ExtResource( 11 )
-state_machine = "../"
 wall_jump = 800
 dash_jump_multiplier = 1.4
 MAX_WALL_SPEED = 600
 
 [node name="dead" type="Node" parent="state_machine"]
 script = ExtResource( 12 )
-state_machine = "../"
 
 [node name="chilling" type="Node" parent="state_machine"]
 script = ExtResource( 13 )
-state_machine = "../"
 
 [node name="swim" type="Node" parent="state_machine"]
 script = ExtResource( 14 )
-state_machine = "../"
 
 [node name="selected" type="Node" parent="state_machine"]
 script = ExtResource( 15 )
-state_machine = "../"
+
+[node name="float" type="Node" parent="state_machine"]
+script = ExtResource( 16 )
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.0
@@ -168,7 +162,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 16 )
+script = ExtResource( 17 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 1
@@ -194,7 +188,7 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 
-[node name="Traits" parent="." instance=ExtResource( 17 )]
+[node name="Traits" parent="." instance=ExtResource( 18 )]
 
 [node name="life_span" type="Timer" parent="."]
 process_mode = 1

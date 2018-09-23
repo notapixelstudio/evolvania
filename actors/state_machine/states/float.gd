@@ -1,7 +1,7 @@
 extends "state.gd"
 
 func setup(actor, previous_state):
-	actor.velocity.x = 0
+	actor.velocity.y = 0
 	actor.emit_signal("perform_action", "idle")
 	
 func input_process(actor, event):
@@ -17,12 +17,4 @@ func input_process(actor, event):
 		
 	if event.is_action_pressed(actor.dash):
 		actor.dash()
-	
-func process(actor, delta):
-	actor.velocity.y += actor.GRAVITY
-	if actor.is_on_floor():
-		return
-	else:
-		if actor.velocity.y > actor.FALL_THRESHOLD:
-			actor.fall()
 	

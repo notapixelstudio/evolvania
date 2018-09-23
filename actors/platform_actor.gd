@@ -17,6 +17,9 @@ export (bool) var can_dash = true
 export (Array) var preset_genotype = []
 export (Array) var preset_phenotype = []
 
+const GRACE_TIME = 0.4
+const JUMP_BUFFER = 0.1
+
 var dna = {
 	'genotype': {
 		'long-living': false,
@@ -109,6 +112,9 @@ func wall_slide():
 	
 func swim():
 	set_state("swim")
+
+func floating():
+	set_state("float")
 	
 func stop():
 	emit_signal("action_performed", "stop")
@@ -123,7 +129,6 @@ func _ready():
 		if not dna['phenotype'][trait.name]:
 			trait.queue_free()
 			
-	
 	state_machine = $state_machine
 	set_state(starting_state)
 	
@@ -143,8 +148,8 @@ func zone_entered(type):
 	
 func zone_exited(type):
 	if type == 'water_surface':
-		idle()
-		#idle()
+		if state_machine.state.name == "swim":
+			floating()
 	
 func get_gamete():
 	var gamete = {}
