@@ -10,6 +10,8 @@ onready var jumps = max_jumps
 
 func setup(actor, previous_state):
 	max_jumps = 300
+	$sound.play()
+	print("should be played")
 	
 	was_dashing = false
 	in_air_speed = get_node("../walk").speed

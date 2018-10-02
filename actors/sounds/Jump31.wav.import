@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Jump31.wav-e9cc8fe74222d40f48a311c582e0a1c9.sample"
+
+[deps]
+
+source_file="res://actors/sounds/Jump31.wav"
+dest_files=[ "res://.import/Jump31.wav-e9cc8fe74222d40f48a311c582e0a1c9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop=false
+compress/mode=0

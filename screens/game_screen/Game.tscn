@@ -22,6 +22,7 @@ script = ExtResource( 1 )
 visible = false
 
 [node name="Content" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 8400, 8400 )
 _sections_unfolded = [ "Transform" ]
 
@@ -272,7 +273,7 @@ max_lines_visible = -1
 stream = ExtResource( 13 )
 volume_db = 0.0
 pitch_scale = 1.0
-autoplay = false
+autoplay = true
 stream_paused = false
 mix_target = 0
 bus = "Master"
