@@ -17,7 +17,6 @@ func setup(actor, previous_state):
 		"walk":
 			in_air_speed = get_node("../walk").speed
 	actor.emit_signal("perform_action", "fall")
-
 func input_process(actor, event):
 	
 	if event.is_action_pressed(actor.right):
@@ -34,7 +33,7 @@ func input_process(actor, event):
 		actor.velocity.x = 0
 		
 	if event.is_action_pressed(actor.jump):
-		if jumps:
+		if actor.dna['phenotype']['wings'] :
 			actor.jump()
 	
 	if event.is_action_pressed(actor.dash):

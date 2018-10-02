@@ -6,14 +6,16 @@ export (int) var max_jumps = 1
 var was_dashing = false
 var in_air_speed = 600.0
 
-var jumps = max_jumps
+onready var jumps = max_jumps
 
 func setup(actor, previous_state):
-	jumps = max_jumps
+	max_jumps = 300
+	$sound.play()
+	print("should be played")
+	
 	was_dashing = false
 	in_air_speed = get_node("../walk").speed
-	
-	match previous_state:
+	match previous_state.name:
 		"idle":
 			jumps = max_jumps
 		"walk":
@@ -24,10 +26,8 @@ func setup(actor, previous_state):
 			in_air_speed = get_node("../dash").dash_speed
 			jumps = max(max_jumps - 1, 1)
 			was_dashing = true
-	
 	if not actor.dna['phenotype']['wings'] and jumps < 1:
 		return
-	
 	jumps -= 1
 	actor.velocity.y = -jump_height
 	actor.emit_signal("perform_action", "jump")

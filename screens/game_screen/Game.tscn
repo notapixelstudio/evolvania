@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://screens/game_screen/Game.gd" type="Script" id=1]
 [ext_resource path="res://debug/FramesPerSecond/FPS.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://interface/Interface.tscn" type="PackedScene" id=11]
 [ext_resource path="res://interface/theme/default_theme.tres" type="Theme" id=12]
 [ext_resource path="res://assets/Alexander Ehlers - Warped.wav" type="AudioStream" id=13]
+[ext_resource path="res://actors/HeroWithState.tscn" type="PackedScene" id=14]
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
@@ -21,6 +22,7 @@ script = ExtResource( 1 )
 visible = false
 
 [node name="Content" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 8400, 8400 )
 _sections_unfolded = [ "Transform" ]
 
@@ -275,6 +277,8 @@ autoplay = true
 stream_paused = false
 mix_target = 0
 bus = "Master"
+
+[node name="Hero" parent="." instance=ExtResource( 14 )]
 
 [connection signal="reset_lifebar" from="." to="CanvasLayer/Interface" method="_on_Game_reset_lifebar"]
 [connection signal="update_counter" from="." to="CanvasLayer/Interface" method="_on_Game_update_counter"]
